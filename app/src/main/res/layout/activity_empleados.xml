@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo_app"
+    tools:context=".Empleados">
+
+    <ScrollView
+        android:id="@+id/scrollView3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/imv_segundoApellidoEmpleado"
+            app:layout_constraintTop_toBottomOf="@+id/imv_segundoApellidoEmpleado">
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="6dp"
+                android:background="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/txt_primerNombreEmpleado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="24dp"
+                android:digits="abcdefghijklmnñopqrstuvxwyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÍÓÚáéíóúäëïöüÄËÏÖÜ"
+                android:ems="10"
+                android:hint="@string/primerNombre"
+                android:inputType="textPersonName"
+                android:maxLength="40"
+                android:minHeight="48dp"
+                android:textColor="@color/white"
+                android:textColorHint="#000000"
+                app:layout_constraintStart_toEndOf="@+id/imv_iconoUsuario_empleados"
+                app:layout_constraintTop_toBottomOf="@+id/imv_iconoUsuario_empleados"/>
+
+            <ImageView
+                android:id="@+id/imv_iconoUsuario_empleados"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="83dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/profile" />
+
+            <TextView
+                android:id="@+id/txv_labelNombreUsuarioEmpleados"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="14dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/nombreUsuario"
+                android:textColor="#020202"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imv_iconoUsuario_empleados"
+                app:layout_constraintStart_toEndOf="@+id/imv_iconoUsuario_empleados" />
+
+            <EditText
+                android:id="@+id/txt_primerApellidoEmpleado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:hint="@string/primerApellido"
+                android:inputType="text"
+                android:maxLength="15"
+                android:minHeight="48dp"
+                android:textColor="@color/white"
+                android:textColorHint="#000000"
+                app:layout_constraintStart_toStartOf="@+id/txt_segundoNombreEmpleado"
+                app:layout_constraintTop_toBottomOf="@+id/txt_segundoNombreEmpleado" />
+
+            <EditText
+                android:id="@+id/txt_segundoApellidoEmpleado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:hint="@string/segundoApellido"
+                android:inputType="text"
+                android:maxLength="8"
+                android:minHeight="48dp"
+                android:textColor="@color/white"
+                android:textColorHint="#000000"
+                app:layout_constraintStart_toStartOf="@+id/txt_primerApellidoEmpleado"
+                app:layout_constraintTop_toBottomOf="@+id/txt_primerApellidoEmpleado" />
+
+            <EditText
+                android:id="@+id/txt_telefonoEmpleado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:hint="@string/telefono"
+                android:inputType="phone"
+                android:maxLength="30"
+                android:minHeight="48dp"
+                android:textColor="@color/white"
+                android:textColorHint="#000000"
+                app:layout_constraintStart_toStartOf="@+id/txt_segundoApellidoEmpleado"
+                app:layout_constraintTop_toBottomOf="@+id/txt_segundoApellidoEmpleado" />
+
+            <EditText
+                android:id="@+id/txt_emailEmpleado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:maxLength="10"
+                android:minHeight="48dp"
+                android:textColor="@color/white"
+                android:textColorHint="#000000"
+                app:layout_constraintStart_toStartOf="@+id/txt_telefonoEmpleado"
+                app:layout_constraintTop_toBottomOf="@+id/txt_telefonoEmpleado" />
+
+            <Button
+                android:id="@+id/btnGuardarEmpleado4"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="671dp"
+                android:layout_marginBottom="41dp"
+                android:background="@drawable/ojo"
+                android:backgroundTint="@color/black"
+                app:layout_constraintBottom_toTopOf="@+id/btnBorrarEmpleado2"
+                app:layout_constraintStart_toEndOf="@+id/txtClaveEmpleado"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+            <EditText
+                android:id="@+id/txt_dniEmpledo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:ems="10"
+                android:hint="@string/dni"
+                android:inputType="number"
+                android:maxLength="10"
+                android:minHeight="48dp"
+                android:textColor="@color/white"
+                android:textColorHint="#000000"
+                app:layout_constraintStart_toStartOf="@+id/txt_emailEmpleado"
+                app:layout_constraintTop_toBottomOf="@+id/txt_emailEmpleado" />
+
+            <EditText
+                android:id="@+id/txtUsuarioEmpleado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:ems="10"
+                android:hint="@string/usuario"
+                android:inputType="textPersonName"
+                android:maxLength="25"
+                android:minHeight="48dp"
+                android:textColor="@color/white"
+                android:textColorHint="#000000"
+                app:layout_constraintStart_toStartOf="@+id/txt_dniEmpledo"
+                app:layout_constraintTop_toBottomOf="@+id/txt_dniEmpledo" />
+
+            <EditText
+                android:id="@+id/txtClaveEmpleado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:hint="@string/contraseña"
+                android:inputType="textPassword"
+                android:minHeight="48dp"
+                android:textColor="@color/white"
+                android:textColorHint="#000000"
+                app:layout_constraintStart_toEndOf="@+id/imv_contraseñaEmpleado"
+                app:layout_constraintTop_toBottomOf="@+id/txtUsuarioEmpleado" />
+
+            <Button
+                android:id="@+id/btnGuardarEmpleado"
+                android:layout_width="32dp"
+                android:layout_height="0dp"
+                android:background="@drawable/disquete"
+                android:backgroundTint="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/btnActualizarEmpleado"
+                app:layout_constraintEnd_toStartOf="@+id/txtClaveEmpleado"
+                app:layout_constraintStart_toStartOf="@+id/txtClaveEmpleado"
+                app:layout_constraintTop_toTopOf="@+id/btnActualizarEmpleado"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+            <Button
+                android:id="@+id/btnActualizarEmpleado"
+                android:layout_width="32dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="151dp"
+                android:layout_marginEnd="150dp"
+                android:background="@drawable/updating"
+                android:backgroundTint="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/btnBorrarEmpleado"
+                app:layout_constraintEnd_toEndOf="@+id/btnBorrarEmpleado2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/btnBorrarEmpleado"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+            <Button
+                android:id="@+id/btnBorrarEmpleado"
+                android:layout_width="32dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="42dp"
+                android:layout_marginEnd="41dp"
+                android:background="@drawable/delete"
+                android:backgroundTint="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/btnBorrarEmpleado2"
+                app:layout_constraintEnd_toEndOf="@+id/txtClaveEmpleado"
+                app:layout_constraintStart_toEndOf="@+id/btnActualizarEmpleado"
+                app:layout_constraintTop_toTopOf="@+id/btnBorrarEmpleado2"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+            <Button
+                android:id="@+id/btnBorrarEmpleado2"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@drawable/lupa"
+                android:backgroundTint="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btnGuardarEmpleado4"
+                app:layout_constraintStart_toStartOf="@+id/btnGuardarEmpleado4"
+                app:layout_constraintTop_toBottomOf="@+id/btn_menuPrincipalEmpleados"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck,DuplicateClickableBoundsCheck" />
+
+            <EditText
+                android:id="@+id/txt_segundoNombreEmpleado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:digits="abcdefghijklmnñopqrstuvxwyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÍÓÚáéíóúäëïöüÄËÏÖÜ"
+                android:ems="10"
+                android:hint="@string/segundoNombre"
+                android:inputType="textPersonName"
+                android:maxLength="40"
+                android:minHeight="48dp"
+                android:textColor="@color/white"
+                android:textColorHint="#000000"
+                app:layout_constraintStart_toStartOf="@+id/txt_primerNombreEmpleado"
+                app:layout_constraintTop_toBottomOf="@+id/txt_primerNombreEmpleado" />
+
+            <TextView
+                android:id="@+id/txv_tituloEmpleados"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="95dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginEnd="43dp"
+                android:text="@string/txv_tituloEmpleado"
+                android:textColor="@color/black"
+                android:textSize="40sp"
+                android:textStyle="normal"
+                app:layout_constraintEnd_toStartOf="@+id/btn_menuPrincipalEmpleados"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imv_primerNombreEmpleado"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="39dp"
+                android:layout_marginTop="32dp"
+                android:contentDescription="@string/icono"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imv_iconoUsuario_empleados"
+                app:srcCompat="@drawable/name" />
+
+            <ImageView
+                android:id="@+id/imv_primerApellidoEmpleado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="39dp"
+                android:layout_marginTop="7dp"
+                android:contentDescription="@string/icono"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txt_primerApellidoEmpleado"
+                app:srcCompat="@drawable/name2" />
+
+            <ImageView
+                android:id="@+id/imv_segundoApellidoEmpleado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="39dp"
+                android:layout_marginTop="9dp"
+                android:contentDescription="@string/icono"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txt_segundoApellidoEmpleado"
+                app:srcCompat="@drawable/name2" />
+
+            <ImageView
+                android:id="@+id/imv_telefonoEmpleado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="39dp"
+                android:layout_marginTop="8dp"
+                android:contentDescription="@string/icono"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txt_telefonoEmpleado"
+                app:srcCompat="@drawable/phone_call" />
+
+            <ImageView
+                android:id="@+id/imv_emailEmpleado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="39dp"
+                android:layout_marginTop="8dp"
+                android:contentDescription="@string/icono"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txt_emailEmpleado"
+                app:srcCompat="@drawable/email" />
+
+            <ImageView
+                android:id="@+id/imv_dniEmpleado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="39dp"
+                android:layout_marginTop="8dp"
+                android:contentDescription="@string/icono"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txt_dniEmpledo"
+                app:srcCompat="@drawable/id_card" />
+
+            <ImageView
+                android:id="@+id/imv_usuarioEmpleado"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="16dp"
+                android:contentDescription="@string/icono"
+                app:layout_constraintEnd_toStartOf="@+id/txtUsuarioEmpleado"
+                app:layout_constraintTop_toTopOf="@+id/txtUsuarioEmpleado"
+                app:srcCompat="@drawable/man_user" />
+
+            <ImageView
+                android:id="@+id/imv_contraseñaEmpleado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="39dp"
+                android:layout_marginTop="7dp"
+                android:contentDescription="@string/icono"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txtClaveEmpleado"
+                app:srcCompat="@drawable/candado_cerrado" />
+
+            <ImageView
+                android:id="@+id/imv_segundoNombreEmpleado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="39dp"
+                android:layout_marginTop="7dp"
+                android:contentDescription="@string/icono"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txt_segundoNombreEmpleado"
+                app:srcCompat="@drawable/name" />
+
+            <Button
+                android:id="@+id/btn_menuPrincipalEmpleados"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginEnd="28dp"
+                android:layout_marginBottom="685dp"
+                android:background="@drawable/home_icon_silhouette"
+                app:layout_constraintBottom_toTopOf="@+id/btnBorrarEmpleado2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/txv_tituloEmpleados"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

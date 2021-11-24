@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BaleadasHermanas">
         <activity
+            android:name=".Empleados"
+            android:exported="false" />
+        <activity
+            android:name=".Principal"
+            android:exported="false" />
+        <activity
             android:name=".Acceso"
             android:exported="true">
             <intent-filter>

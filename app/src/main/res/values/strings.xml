@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Baleadas Hermanas</string>
+    <string name="txv_tituloLogin">Acceso</string>
+    <string name="txv_hasOlvidadoContraseña">¿Has olvidado tu contraseña?</string>
+    <string name="btn_ingresar">Ingresar</string>
+    <string name="txt_usuario">Usuario</string>
+    <string name="txt_contraseña">Contraseña</string>
+    <string name="todo">TODO</string>
+    <string name="icono">Icono</string>
+    <string name="icono">Icono</string>
+    <string name="icono">Icono</string>
+</resources>

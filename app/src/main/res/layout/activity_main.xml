@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo_app"
+    tools:context=".MainActivity">
+
+    <View
+        android:id="@+id/viw_blanco"
+        android:layout_width="0dp"
+        android:layout_height="476dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="14dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/imv_contraseña"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imv_contraseña" />
+
+    <TextView
+        android:id="@+id/txv_tituloLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/roboto_black"
+        android:text="@string/txv_tituloLogin"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/viw_blanco"
+        app:layout_constraintStart_toStartOf="@+id/viw_blanco"
+        app:layout_constraintTop_toTopOf="@+id/viw_blanco" />
+
+    <Button
+        android:id="@+id/btn_ingresar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="@color/rosado1"
+        android:fontFamily="@font/roboto_regular"
+        android:text="@string/btn_ingresar"
+        app:iconTint="@color/rosado1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
+        app:rippleColor="@color/rosado2"
+        tools:ignore="TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/txt_usuario"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="104dp"
+        android:layout_marginEnd="79dp"
+        android:layout_marginBottom="106dp"
+        android:ems="10"
+        android:fontFamily="@font/roboto_regular"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:hint="@string/txt_usuario"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imv_usuario"
+        app:layout_constraintTop_toTopOf="@+id/viw_blanco"
+        android:importantForAutofill="no" />
+
+    <ImageView
+        android:id="@+id/imv_usuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="6dp"
+        android:contentDescription="@string/icono"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_usuario"
+        app:layout_constraintEnd_toStartOf="@+id/txt_usuario"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/man_user" />
+
+    <ImageView
+        android:id="@+id/imv_contraseña"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginEnd="13dp"
+        android:contentDescription="@string/icono"
+        app:layout_constraintEnd_toStartOf="@+id/editTextTextPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/editTextTextPassword"
+        app:srcCompat="@drawable/candado_cerrado" />
+
+    <EditText
+        android:id="@+id/editTextTextPassword"
+        android:layout_width="0dp"
+        android:layout_height="49dp"
+        android:layout_marginEnd="12dp"
+        android:ems="10"
+        android:fontFamily="@font/roboto_regular"
+        android:hint="@string/txt_contraseña"
+        android:hintTextColor="#78909C"
+        android:importantForAutofill="no"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imv_verContraseña"
+        app:layout_constraintStart_toEndOf="@+id/imv_contraseña"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck,TextContrastCheck,TextContrastCheck" />
+
+    <ImageView
+        android:id="@+id/imv_verContraseña"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="33dp"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="@string/icono"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editTextTextPassword"
+        app:srcCompat="@drawable/ojo" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="41dp"
+        android:fontFamily="@font/roboto_regular"
+        android:text="@string/txv_hasOlvidadoContraseña"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_ingresar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

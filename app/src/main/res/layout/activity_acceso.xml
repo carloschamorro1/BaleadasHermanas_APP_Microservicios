@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo_app"
-    tools:context=".MainActivity">
+    tools:context=".Acceso">
 
     <View
         android:id="@+id/viw_blanco"
@@ -43,7 +43,7 @@
         app:iconTint="@color/rosado1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintTop_toBottomOf="@+id/txt_contraseña"
         app:rippleColor="@color/rosado2"
         tools:ignore="TextContrastCheck" />
 
@@ -60,7 +60,7 @@
         android:minHeight="48dp"
         android:hint="@string/txt_usuario"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_contraseña"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imv_usuario"
         app:layout_constraintTop_toTopOf="@+id/viw_blanco"
@@ -86,20 +86,19 @@
         android:layout_marginStart="28dp"
         android:layout_marginEnd="13dp"
         android:contentDescription="@string/icono"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTextPassword"
+        app:layout_constraintEnd_toStartOf="@+id/txt_contraseña"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPassword"
+        app:layout_constraintTop_toTopOf="@+id/txt_contraseña"
         app:srcCompat="@drawable/candado_cerrado" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/txt_contraseña"
         android:layout_width="0dp"
         android:layout_height="49dp"
         android:layout_marginEnd="12dp"
         android:ems="10"
         android:fontFamily="@font/roboto_regular"
         android:hint="@string/txt_contraseña"
-        android:hintTextColor="#78909C"
         android:importantForAutofill="no"
         android:inputType="textPassword"
         android:minHeight="48dp"
@@ -116,9 +115,9 @@
         android:layout_marginEnd="33dp"
         android:layout_marginBottom="8dp"
         android:contentDescription="@string/icono"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_contraseña"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextPassword"
+        app:layout_constraintStart_toEndOf="@+id/txt_contraseña"
         app:srcCompat="@drawable/ojo" />
 
     <TextView

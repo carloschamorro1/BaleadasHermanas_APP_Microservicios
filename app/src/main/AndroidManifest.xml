@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BaleadasHermanas">
         <activity
-            android:name=".MainActivity"
+            android:name=".Acceso"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

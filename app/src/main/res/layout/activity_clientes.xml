@@ -51,7 +51,6 @@
                 android:inputType="textPersonName"
                 android:maxLength="40"
                 android:minHeight="48dp"
-                android:textColor="@color/white"
                 android:textColorHint="#000000"
                 app:layout_constraintBottom_toTopOf="@+id/imv_segundoNombreCliente"
                 app:layout_constraintStart_toEndOf="@+id/imv_primerNombreCliente" />
@@ -87,10 +86,9 @@
                 android:ems="10"
                 android:fontFamily="@font/roboto_regular"
                 android:hint="@string/primerApellido"
-                android:inputType="text"
-                android:maxLength="15"
+                android:inputType="textPersonName"
+                android:maxLength="40"
                 android:minHeight="48dp"
-                android:textColor="@color/white"
                 android:textColorHint="#000000"
                 app:layout_constraintStart_toStartOf="@+id/txt_segundoNombreCliente"
                 app:layout_constraintTop_toBottomOf="@+id/txt_segundoNombreCliente" />
@@ -103,10 +101,9 @@
                 android:ems="10"
                 android:fontFamily="@font/roboto_regular"
                 android:hint="@string/segundoApellido"
-                android:inputType="text"
-                android:maxLength="8"
+                android:inputType="textPersonName"
+                android:maxLength="40"
                 android:minHeight="48dp"
-                android:textColor="@color/white"
                 android:textColorHint="#000000"
                 app:layout_constraintStart_toStartOf="@+id/txt_primerApellidoCliente"
                 app:layout_constraintTop_toBottomOf="@+id/txt_primerApellidoCliente" />
@@ -120,9 +117,8 @@
                 android:fontFamily="@font/roboto_regular"
                 android:hint="@string/telefono"
                 android:inputType="phone"
-                android:maxLength="30"
+                android:maxLength="8"
                 android:minHeight="48dp"
-                android:textColor="@color/white"
                 android:textColorHint="#000000"
                 app:layout_constraintStart_toStartOf="@+id/txt_segundoApellidoCliente"
                 app:layout_constraintTop_toBottomOf="@+id/txt_segundoApellidoCliente" />
@@ -136,9 +132,8 @@
                 android:fontFamily="@font/roboto_regular"
                 android:hint="@string/email"
                 android:inputType="textEmailAddress"
-                android:maxLength="10"
+                android:maxLength="50"
                 android:minHeight="48dp"
-                android:textColor="@color/white"
                 android:textColorHint="#000000"
                 app:layout_constraintStart_toStartOf="@+id/txt_telefonoCliente"
                 app:layout_constraintTop_toBottomOf="@+id/txt_telefonoCliente" />
@@ -152,9 +147,8 @@
                 android:fontFamily="@font/roboto_regular"
                 android:hint="@string/dni"
                 android:inputType="number"
-                android:maxLength="10"
+                android:maxLength="13"
                 android:minHeight="48dp"
-                android:textColor="@color/white"
                 android:textColorHint="#000000"
                 app:layout_constraintStart_toStartOf="@+id/txt_emailCliente"
                 app:layout_constraintTop_toBottomOf="@+id/txt_emailCliente" />
@@ -167,10 +161,9 @@
                 android:ems="10"
                 android:fontFamily="@font/roboto_regular"
                 android:hint="@string/rtn"
-                android:inputType="textPersonName"
-                android:maxLength="25"
+                android:inputType="number"
+                android:maxLength="14"
                 android:minHeight="48dp"
-                android:textColor="@color/white"
                 android:textColorHint="#000000"
                 app:layout_constraintStart_toStartOf="@+id/txt_dniCliente"
                 app:layout_constraintTop_toBottomOf="@+id/txt_dniCliente" />
@@ -244,7 +237,6 @@
                 android:inputType="textPersonName"
                 android:maxLength="40"
                 android:minHeight="48dp"
-                android:textColor="@color/white"
                 android:textColorHint="#000000"
                 app:layout_constraintStart_toStartOf="@+id/txt_primerNombreCliente"
                 app:layout_constraintTop_toBottomOf="@+id/txt_primerNombreCliente" />
@@ -344,7 +336,7 @@
                 app:layout_constraintEnd_toEndOf="@+id/imv_dniCliente"
                 app:layout_constraintStart_toStartOf="@+id/imv_dniCliente"
                 app:layout_constraintTop_toTopOf="@+id/txt_rtnCliente"
-                app:srcCompat="@drawable/man_user" />
+                app:srcCompat="@drawable/tarjeta_de_identificacion" />
 
             <ImageView
                 android:id="@+id/imv_segundoNombreCliente"

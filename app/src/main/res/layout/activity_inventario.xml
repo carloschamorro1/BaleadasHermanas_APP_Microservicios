@@ -4,6 +4,266 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Inventario">
+    android:background="@drawable/fondo_app"
+    tools:context=".Empleados">
+
+    <ScrollView
+        android:id="@+id/scrollView3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/imv_precioProducto"
+            app:layout_constraintTop_toBottomOf="@+id/imv_precioProducto">
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="370dp"
+                android:layout_height="517dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.6"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <EditText
+                android:id="@+id/txt_nombreProducto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="20dp"
+                android:digits="abcdefghijklmnñopqrstuvxwyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÍÓÚáéíóúäëïöüÄËÏÖÜ"
+                android:ems="10"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="@string/nombreProducto"
+                android:inputType="textPersonName"
+                android:maxLength="100"
+                android:minHeight="48dp"
+                android:textColorHint="#000000"
+                app:layout_constraintBottom_toTopOf="@+id/imv_cantidadProducto"
+                app:layout_constraintStart_toEndOf="@+id/imv_nombreProducto" />
+
+            <TextView
+                android:id="@+id/txv_labelNombreUsuarioInventario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="14dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/nombreUsuario"
+                android:textColor="#020202"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imv_iconoUsuario_inventario"
+                app:layout_constraintStart_toEndOf="@+id/imv_iconoUsuario_inventario" />
+
+            <ImageView
+                android:id="@+id/imv_iconoUsuario_inventario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="19dp"
+                app:layout_constraintStart_toStartOf="@+id/view"
+                app:layout_constraintTop_toBottomOf="@+id/txv_tituloInventario"
+                app:srcCompat="@drawable/profile" />
+
+            <EditText
+                android:id="@+id/txt_precioProducto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="89dp"
+                android:layout_marginEnd="3dp"
+                android:layout_marginBottom="88dp"
+                android:ems="10"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="@string/precioProducto"
+                android:inputType="numberDecimal"
+                android:maxLength="10"
+                android:minHeight="48dp"
+                android:textColorHint="#000000"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_ActualizarEmpleado"
+                app:layout_constraintEnd_toEndOf="@+id/spi_tipoMovimiento"
+                app:layout_constraintTop_toBottomOf="@+id/imv_cantidadProducto"
+                app:layout_constraintVertical_bias="0.764" />
+
+            <ImageView
+                android:id="@+id/imv_precioProducto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="4dp"
+                android:contentDescription="@string/icono"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_precioProducto"
+                app:layout_constraintEnd_toStartOf="@+id/txt_precioProducto"
+                app:srcCompat="@drawable/pagar" />
+
+            <Button
+                android:id="@+id/btn_GuardarEmpleado"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="71dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="48dp"
+                android:background="@drawable/disquete"
+                android:backgroundTint="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btn_ActualizarEmpleado"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/btn_ActualizarEmpleado"
+                app:layout_constraintVertical_bias="0.0"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+            <Button
+                android:id="@+id/btn_ActualizarEmpleado"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="42dp"
+                android:background="@drawable/updating"
+                android:backgroundTint="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_BorrarEmpleado"
+                app:layout_constraintEnd_toStartOf="@+id/btn_BorrarEmpleado"
+                app:layout_constraintStart_toEndOf="@+id/btn_GuardarEmpleado"
+                app:layout_constraintTop_toTopOf="@+id/btn_BorrarEmpleado"
+                app:layout_constraintVertical_bias="1.0"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+            <Button
+                android:id="@+id/btn_BorrarEmpleado"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="44dp"
+                android:background="@drawable/delete"
+                android:backgroundTint="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_buscarEmpleado"
+                app:layout_constraintEnd_toStartOf="@+id/btn_buscarEmpleado"
+                app:layout_constraintStart_toEndOf="@+id/btn_ActualizarEmpleado"
+                app:layout_constraintTop_toTopOf="@+id/btn_buscarEmpleado"
+                app:layout_constraintVertical_bias="0.0"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+            <Button
+                android:id="@+id/btn_buscarEmpleado"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="60dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/lupa"
+                android:backgroundTint="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btn_BorrarEmpleado"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck,DuplicateClickableBoundsCheck" />
+
+            <EditText
+                android:id="@+id/txt_cantidadProducto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:ems="10"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="@string/cantidadProducto"
+                android:inputType="number"
+                android:maxLength="7"
+                android:minHeight="48dp"
+                android:textColorHint="#000000"
+                app:layout_constraintStart_toStartOf="@+id/txt_nombreProducto"
+                app:layout_constraintTop_toBottomOf="@+id/txt_nombreProducto" />
+
+            <TextView
+                android:id="@+id/txv_tituloInventario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="89dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginEnd="44dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/inventario"
+                android:textColor="@color/black"
+                android:textSize="40sp"
+                android:textStyle="normal"
+                app:layout_constraintEnd_toStartOf="@+id/btn_menuPrincipalInventario"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imv_nombreProducto"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:contentDescription="@string/icono"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_nombreProducto"
+                app:layout_constraintEnd_toEndOf="@+id/imv_cantidadProducto"
+                app:layout_constraintStart_toStartOf="@+id/imv_cantidadProducto"
+                app:layout_constraintTop_toTopOf="@+id/txt_nombreProducto"
+                app:srcCompat="@drawable/nuevo_producto" />
+
+            <ImageView
+                android:id="@+id/imv_tipoMovimiento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginEnd="17dp"
+                android:contentDescription="@string/icono"
+                app:layout_constraintEnd_toStartOf="@+id/spi_tipoMovimiento"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/spi_tipoMovimiento"
+                app:srcCompat="@drawable/inventario" />
+
+            <ImageView
+                android:id="@+id/imv_cantidadProducto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="23dp"
+                android:layout_marginTop="238dp"
+                android:contentDescription="@string/icono"
+                app:layout_constraintStart_toStartOf="@+id/view"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/cantidad" />
+
+            <Button
+                android:id="@+id/btn_menuPrincipalInventario"
+                android:layout_width="51dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="22dp"
+                android:layout_marginBottom="13dp"
+                android:background="@drawable/home_icon_silhouette"
+                app:layout_constraintBottom_toTopOf="@+id/imv_iconoUsuario_inventario"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/txv_tituloInventario"
+                app:layout_constraintTop_toTopOf="@+id/view"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Spinner
+                android:id="@+id/spi_tipoMovimiento"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="23dp"
+                android:layout_marginEnd="95dp"
+                android:layout_marginBottom="21dp"
+                app:layout_constraintBottom_toTopOf="@+id/imv_precioProducto"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imv_tipoMovimiento"
+                app:layout_constraintTop_toBottomOf="@+id/txt_cantidadProducto"
+                app:layout_constraintVertical_bias="0.529"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

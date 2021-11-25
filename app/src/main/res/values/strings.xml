@@ -4,14 +4,13 @@
     <string name="txv_hasOlvidadoContraseña">¿Has olvidado tu contraseña?</string>
     <string name="btn_ingresar">Ingresar</string>
     <string name="txt_usuario">Usuario</string>
-    <string name="txt_contraseña">Contraseña</string>
     <string name="todo">TODO</string>
     <string name="icono">Icono</string>
     <string name="nombreUsuario">Nombre de usuario</string>
-    <string name="btn_empleados">Empleados</string>
-    <string name="btn_clientes">Clientes</string>
-    <string name="btn_inventario">Inventario</string>
-    <string name="btn_facturacion">Facturación</string>
+    <string name="empleados">Empleados</string>
+    <string name="clientes">Clientes</string>
+    <string name="inventario">Inventario</string>
+    <string name="facturacion">Facturación</string>
     <string name="primerNombre">Primer nombre</string>
     <string name="segundoNombre">Segundo nombre</string>
     <string name="primerApellido">Primer apellido</string>
@@ -19,7 +18,8 @@
     <string name="telefono">Teléfono</string>
     <string name="email">E-Mail</string>
     <string name="dni">DNI</string>
+    <string name="rtn">RTN</string>
     <string name="usuario">Usuario</string>
     <string name="contraseña">Contraseña</string>
-    <string name="txv_tituloEmpleado">Empleado</string>
+
 </resources>

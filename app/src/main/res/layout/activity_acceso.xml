@@ -123,7 +123,7 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:fontFamily="@font/roboto_regular"
-            android:hint="Contraseña"
+            android:hint="@string/contraseña"
             android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
 

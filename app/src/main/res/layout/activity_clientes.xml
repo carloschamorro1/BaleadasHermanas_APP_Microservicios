@@ -22,25 +22,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="@+id/imv_segundoApellidoEmpleado"
-            app:layout_constraintTop_toBottomOf="@+id/imv_segundoApellidoEmpleado">
+            app:layout_constraintBottom_toBottomOf="@+id/imv_segundoApellidoCliente"
+            app:layout_constraintTop_toBottomOf="@+id/imv_segundoApellidoCliente">
 
             <View
                 android:id="@+id/view"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_width="375dp"
+                android:layout_height="734dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:background="#FFFFFF"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="1.0" />
 
             <EditText
-                android:id="@+id/txt_primerNombreEmpleado"
+                android:id="@+id/txt_primerNombreCliente"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -54,11 +53,11 @@
                 android:minHeight="48dp"
                 android:textColor="@color/white"
                 android:textColorHint="#000000"
-                app:layout_constraintBottom_toTopOf="@+id/imv_segundoNombreEmpleado"
-                app:layout_constraintStart_toEndOf="@+id/imv_primerNombreEmpleado" />
+                app:layout_constraintBottom_toTopOf="@+id/imv_segundoNombreCliente"
+                app:layout_constraintStart_toEndOf="@+id/imv_primerNombreCliente" />
 
             <TextView
-                android:id="@+id/txv_labelNombreUsuarioEmpleados"
+                android:id="@+id/txv_labelNombreUsuarioClientes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -67,21 +66,21 @@
                 android:text="@string/nombreUsuario"
                 android:textColor="#020202"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="@+id/imv_iconoUsuario_empleados"
-                app:layout_constraintStart_toEndOf="@+id/imv_iconoUsuario_empleados" />
+                app:layout_constraintBottom_toBottomOf="@+id/imv_iconoUsuario_clientes"
+                app:layout_constraintStart_toEndOf="@+id/imv_iconoUsuario_clientes" />
 
             <ImageView
-                android:id="@+id/imv_iconoUsuario_empleados"
+                android:id="@+id/imv_iconoUsuario_clientes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="19dp"
                 app:layout_constraintStart_toStartOf="@+id/view"
-                app:layout_constraintTop_toBottomOf="@+id/txv_tituloEmpleados"
+                app:layout_constraintTop_toBottomOf="@+id/txv_tituloCliente"
                 app:srcCompat="@drawable/profile" />
 
             <EditText
-                android:id="@+id/txt_primerApellidoEmpleado"
+                android:id="@+id/txt_primerApellidoCliente"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -93,11 +92,11 @@
                 android:minHeight="48dp"
                 android:textColor="@color/white"
                 android:textColorHint="#000000"
-                app:layout_constraintStart_toStartOf="@+id/txt_segundoNombreEmpleado"
-                app:layout_constraintTop_toBottomOf="@+id/txt_segundoNombreEmpleado" />
+                app:layout_constraintStart_toStartOf="@+id/txt_segundoNombreCliente"
+                app:layout_constraintTop_toBottomOf="@+id/txt_segundoNombreCliente" />
 
             <EditText
-                android:id="@+id/txt_segundoApellidoEmpleado"
+                android:id="@+id/txt_segundoApellidoCliente"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -109,11 +108,11 @@
                 android:minHeight="48dp"
                 android:textColor="@color/white"
                 android:textColorHint="#000000"
-                app:layout_constraintStart_toStartOf="@+id/txt_primerApellidoEmpleado"
-                app:layout_constraintTop_toBottomOf="@+id/txt_primerApellidoEmpleado" />
+                app:layout_constraintStart_toStartOf="@+id/txt_primerApellidoCliente"
+                app:layout_constraintTop_toBottomOf="@+id/txt_primerApellidoCliente" />
 
             <EditText
-                android:id="@+id/txt_telefonoEmpleado"
+                android:id="@+id/txt_telefonoCliente"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -125,11 +124,11 @@
                 android:minHeight="48dp"
                 android:textColor="@color/white"
                 android:textColorHint="#000000"
-                app:layout_constraintStart_toStartOf="@+id/txt_segundoApellidoEmpleado"
-                app:layout_constraintTop_toBottomOf="@+id/txt_segundoApellidoEmpleado" />
+                app:layout_constraintStart_toStartOf="@+id/txt_segundoApellidoCliente"
+                app:layout_constraintTop_toBottomOf="@+id/txt_segundoApellidoCliente" />
 
             <EditText
-                android:id="@+id/txt_emailEmpleado"
+                android:id="@+id/txt_emailCliente"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -141,11 +140,11 @@
                 android:minHeight="48dp"
                 android:textColor="@color/white"
                 android:textColorHint="#000000"
-                app:layout_constraintStart_toStartOf="@+id/txt_telefonoEmpleado"
-                app:layout_constraintTop_toBottomOf="@+id/txt_telefonoEmpleado" />
+                app:layout_constraintStart_toStartOf="@+id/txt_telefonoCliente"
+                app:layout_constraintTop_toBottomOf="@+id/txt_telefonoCliente" />
 
             <EditText
-                android:id="@+id/txt_dniEmpledo"
+                android:id="@+id/txt_dniCliente"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
@@ -157,24 +156,24 @@
                 android:minHeight="48dp"
                 android:textColor="@color/white"
                 android:textColorHint="#000000"
-                app:layout_constraintStart_toStartOf="@+id/txt_emailEmpleado"
-                app:layout_constraintTop_toBottomOf="@+id/txt_emailEmpleado" />
+                app:layout_constraintStart_toStartOf="@+id/txt_emailCliente"
+                app:layout_constraintTop_toBottomOf="@+id/txt_emailCliente" />
 
             <EditText
-                android:id="@+id/txt_usuarioEmpleado"
+                android:id="@+id/txt_rtnCliente"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="11dp"
                 android:ems="10"
                 android:fontFamily="@font/roboto_regular"
-                android:hint="@string/usuario"
+                android:hint="@string/rtn"
                 android:inputType="textPersonName"
                 android:maxLength="25"
                 android:minHeight="48dp"
                 android:textColor="@color/white"
                 android:textColorHint="#000000"
-                app:layout_constraintStart_toStartOf="@+id/txt_dniEmpledo"
-                app:layout_constraintTop_toBottomOf="@+id/txt_dniEmpledo" />
+                app:layout_constraintStart_toStartOf="@+id/txt_dniCliente"
+                app:layout_constraintTop_toBottomOf="@+id/txt_dniCliente" />
 
             <Button
                 android:id="@+id/btn_GuardarEmpleado"
@@ -234,7 +233,7 @@
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck,DuplicateClickableBoundsCheck" />
 
             <EditText
-                android:id="@+id/txt_segundoNombreEmpleado"
+                android:id="@+id/txt_segundoNombreCliente"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
@@ -247,36 +246,36 @@
                 android:minHeight="48dp"
                 android:textColor="@color/white"
                 android:textColorHint="#000000"
-                app:layout_constraintStart_toStartOf="@+id/txt_primerNombreEmpleado"
-                app:layout_constraintTop_toBottomOf="@+id/txt_primerNombreEmpleado" />
+                app:layout_constraintStart_toStartOf="@+id/txt_primerNombreCliente"
+                app:layout_constraintTop_toBottomOf="@+id/txt_primerNombreCliente" />
 
             <TextView
-                android:id="@+id/txv_tituloEmpleados"
+                android:id="@+id/txv_tituloCliente"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="89dp"
                 android:layout_marginTop="11dp"
                 android:layout_marginEnd="44dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="@string/empleados"
+                android:text="@string/clientes"
                 android:textColor="@color/black"
                 android:textSize="40sp"
                 android:textStyle="normal"
-                app:layout_constraintEnd_toStartOf="@+id/btn_menuPrincipalEmpleados"
+                app:layout_constraintEnd_toStartOf="@+id/btn_menuPrincipalClientes"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/imv_primerNombreEmpleado"
+                android:id="@+id/imv_primerNombreCliente"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:contentDescription="@string/icono"
-                app:layout_constraintBottom_toBottomOf="@+id/txt_primerNombreEmpleado"
-                app:layout_constraintEnd_toEndOf="@+id/imv_segundoNombreEmpleado"
-                app:layout_constraintStart_toStartOf="@+id/imv_segundoNombreEmpleado"
-                app:layout_constraintTop_toTopOf="@+id/txt_primerNombreEmpleado"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_primerNombreCliente"
+                app:layout_constraintEnd_toEndOf="@+id/imv_segundoNombreCliente"
+                app:layout_constraintStart_toStartOf="@+id/imv_segundoNombreCliente"
+                app:layout_constraintTop_toTopOf="@+id/txt_primerNombreCliente"
                 app:srcCompat="@drawable/name" />
 
             <ImageView
@@ -286,80 +285,69 @@
                 android:layout_marginTop="7dp"
                 android:layout_marginEnd="16dp"
                 android:contentDescription="@string/icono"
-                app:layout_constraintEnd_toStartOf="@+id/txt_primerApellidoEmpleado"
-                app:layout_constraintTop_toTopOf="@+id/txt_primerApellidoEmpleado"
+                app:layout_constraintEnd_toStartOf="@+id/txt_primerApellidoCliente"
+                app:layout_constraintTop_toTopOf="@+id/txt_primerApellidoCliente"
                 app:srcCompat="@drawable/name2" />
 
             <ImageView
-                android:id="@+id/imv_segundoApellidoEmpleado"
+                android:id="@+id/imv_segundoApellidoCliente"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="7dp"
                 android:contentDescription="@string/icono"
-                app:layout_constraintBottom_toBottomOf="@+id/txt_segundoApellidoEmpleado"
-                app:layout_constraintEnd_toStartOf="@+id/txt_segundoApellidoEmpleado"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_segundoApellidoCliente"
+                app:layout_constraintEnd_toStartOf="@+id/txt_segundoApellidoCliente"
                 app:srcCompat="@drawable/name2" />
 
             <ImageView
-                android:id="@+id/imv_telefonoEmpleado"
+                android:id="@+id/imv_telefonoCliente"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:contentDescription="@string/icono"
-                app:layout_constraintEnd_toStartOf="@+id/txt_telefonoEmpleado"
-                app:layout_constraintTop_toTopOf="@+id/txt_telefonoEmpleado"
+                app:layout_constraintEnd_toStartOf="@+id/txt_telefonoCliente"
+                app:layout_constraintTop_toTopOf="@+id/txt_telefonoCliente"
                 app:srcCompat="@drawable/phone_call" />
 
             <ImageView
-                android:id="@+id/imv_emailEmpleado"
+                android:id="@+id/imv_emailCliente"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:contentDescription="@string/icono"
-                app:layout_constraintEnd_toStartOf="@+id/txt_emailEmpleado"
-                app:layout_constraintTop_toTopOf="@+id/txt_emailEmpleado"
+                app:layout_constraintEnd_toStartOf="@+id/txt_emailCliente"
+                app:layout_constraintTop_toTopOf="@+id/txt_emailCliente"
                 app:srcCompat="@drawable/email" />
 
             <ImageView
-                android:id="@+id/imv_dniEmpleado"
+                android:id="@+id/imv_dniCliente"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:contentDescription="@string/icono"
-                app:layout_constraintEnd_toStartOf="@+id/txt_dniEmpledo"
-                app:layout_constraintTop_toTopOf="@+id/txt_dniEmpledo"
+                app:layout_constraintEnd_toStartOf="@+id/txt_dniCliente"
+                app:layout_constraintTop_toTopOf="@+id/txt_dniCliente"
                 app:srcCompat="@drawable/id_card" />
 
             <ImageView
-                android:id="@+id/imv_usuarioEmpleado"
+                android:id="@+id/imv_rtnCliente"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginBottom="6dp"
                 android:contentDescription="@string/icono"
-                app:layout_constraintBottom_toBottomOf="@+id/txt_usuarioEmpleado"
-                app:layout_constraintEnd_toEndOf="@+id/imv_dniEmpleado"
-                app:layout_constraintStart_toStartOf="@+id/imv_dniEmpleado"
-                app:layout_constraintTop_toTopOf="@+id/txt_usuarioEmpleado"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_rtnCliente"
+                app:layout_constraintEnd_toEndOf="@+id/imv_dniCliente"
+                app:layout_constraintStart_toStartOf="@+id/imv_dniCliente"
+                app:layout_constraintTop_toTopOf="@+id/txt_rtnCliente"
                 app:srcCompat="@drawable/man_user" />
 
             <ImageView
-                android:id="@+id/imv_contraseñaEmpleado"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="11dp"
-                android:contentDescription="@string/icono"
-                app:layout_constraintEnd_toStartOf="@+id/textInputLayout2"
-                app:layout_constraintTop_toTopOf="@+id/textInputLayout2"
-                app:srcCompat="@drawable/candado_cerrado" />
-
-            <ImageView
-                android:id="@+id/imv_segundoNombreEmpleado"
+                android:id="@+id/imv_segundoNombreCliente"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="23dp"
@@ -370,41 +358,18 @@
                 app:srcCompat="@drawable/name" />
 
             <Button
-                android:id="@+id/btn_menuPrincipalEmpleados"
-                android:layout_width="49dp"
-                android:layout_height="50dp"
+                android:id="@+id/btn_menuPrincipalClientes"
+                android:layout_width="51dp"
+                android:layout_height="48dp"
                 android:layout_marginTop="15dp"
-                android:layout_marginEnd="28dp"
+                android:layout_marginEnd="22dp"
                 android:layout_marginBottom="13dp"
                 android:background="@drawable/home_icon_silhouette"
-                app:layout_constraintBottom_toTopOf="@+id/imv_iconoUsuario_empleados"
+                app:layout_constraintBottom_toTopOf="@+id/imv_iconoUsuario_clientes"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/txv_tituloEmpleados"
+                app:layout_constraintStart_toEndOf="@+id/txv_tituloCliente"
                 app:layout_constraintTop_toTopOf="@+id/view"
-                app:layout_constraintVertical_bias="1.0"
                 tools:ignore="SpeakableTextPresentCheck" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout2"
-                android:layout_width="223dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="77dp"
-                android:layout_marginTop="78dp"
-                android:layout_marginEnd="77dp"
-                android:layout_marginBottom="76dp"
-                app:endIconMode="password_toggle"
-                app:layout_constraintBottom_toBottomOf="@+id/btn_ActualizarEmpleado"
-                app:layout_constraintEnd_toEndOf="@+id/view"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_dniEmpledo">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:background="@color/white"
-                    android:hint="@string/contraseña"
-                    android:inputType="textPassword" />
-            </com.google.android.material.textfield.TextInputLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

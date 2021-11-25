@@ -26,6 +26,11 @@ class Principal : AppCompatActivity() {
             startActivity(intent)
         }
 
+        btn_facturacion.setOnClickListener {
+            val intent = Intent(this, Facturacion::class.java)
+            startActivity(intent)
+        }
+
 
         imv_cerrarSesion.setOnClickListener {
             val intent = Intent(this, Acceso::class.java)

@@ -39,7 +39,7 @@
         android:layout_marginTop="37dp"
         android:layout_marginBottom="35dp"
         android:backgroundTint="@color/rosado1"
-        android:fontFamily="@font/roboto_regular"
+        android:fontFamily="@font/roboto_bold"
         android:text="@string/btn_ingresar"
         app:iconTint="@color/rosado1"
         app:layout_constraintBottom_toTopOf="@+id/textView4"

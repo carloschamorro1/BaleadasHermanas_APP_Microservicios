@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo_app"
+    tools:context=".Empleados">
+
+    <ScrollView
+        android:id="@+id/scrollView3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/imv_segundoApellidoEmpleado"
+            app:layout_constraintTop_toBottomOf="@+id/imv_segundoApellidoEmpleado">
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="21dp"
+                android:layout_marginEnd="21dp"
+                android:background="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="53dp"
+                android:layout_marginEnd="53dp"
+                android:layout_marginBottom="609dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView2"
+                app:srcCompat="@drawable/horizontal_line" />
+
+            <TextView
+                android:id="@+id/txv_labelNombreUsuarioEmpleados2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/nombreUsuario"
+                android:textColor="#020202"
+                android:textSize="20sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/txv_labelNombreUsuarioEmpleados"
+                app:layout_constraintStart_toEndOf="@+id/imv_iconoUsuario_empleados" />
+
+            <TextView
+                android:id="@+id/txv_labelNombreUsuarioEmpleados"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/nombreUsuario"
+                android:textColor="#020202"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imv_iconoUsuario_empleados"
+                app:layout_constraintStart_toStartOf="@+id/txv_labelNombreUsuarioEmpleados2" />
+
+            <ImageView
+                android:id="@+id/imv_iconoUsuario_empleados"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="11dp"
+                android:layout_marginTop="19dp"
+                app:layout_constraintStart_toStartOf="@+id/view"
+                app:layout_constraintTop_toBottomOf="@+id/txv_tituloEmpleados"
+                app:srcCompat="@drawable/profile" />
+
+            <TextView
+                android:id="@+id/txv_tituloEmpleados"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="71dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginEnd="18dp"
+                android:layout_marginBottom="249dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/facturacion"
+                android:textColor="@color/black"
+                android:textSize="40sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toTopOf="@+id/imageView2"
+                app:layout_constraintEnd_toStartOf="@+id/btn_menuPrincipalFacturacion"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imv_cliente"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="42dp"
+                android:layout_marginEnd="42dp"
+                android:contentDescription="@string/icono"
+                app:layout_constraintBottom_toBottomOf="@+id/spi_nombreCliente"
+                app:layout_constraintEnd_toStartOf="@+id/txv_labelNombreUsuarioEmpleados2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/spi_nombreCliente"
+                app:srcCompat="@drawable/cliente" />
+
+            <Button
+                android:id="@+id/btn_menuPrincipalFacturacion"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="37dp"
+                android:background="@drawable/home_icon_silhouette"
+                app:layout_constraintBottom_toBottomOf="@+id/txv_tituloEmpleados"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/txv_tituloEmpleados"
+                app:layout_constraintTop_toTopOf="@+id/txv_tituloEmpleados"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Spinner
+                android:id="@+id/spi_nombreCliente"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_marginStart="21dp"
+                android:layout_marginTop="72dp"
+                android:layout_marginEnd="21dp"
+                android:layout_marginBottom="70dp"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_iniciarFactura"
+                app:layout_constraintEnd_toEndOf="@+id/_dynamic"
+                app:layout_constraintStart_toStartOf="@+id/txv_tituloEmpleados"
+                app:layout_constraintTop_toTopOf="@+id/txv_labelNombreUsuarioEmpleados2"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Button
+                android:id="@+id/btn_iniciarFactura"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="252dp"
+                android:layout_marginEnd="40dp"
+                android:backgroundTint="@color/rosado1"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Iniciar"
+                app:layout_constraintEnd_toEndOf="@+id/txv_labelNombreUsuarioEmpleados2"
+                app:layout_constraintStart_toEndOf="@+id/txv_metodoPago"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txv_metodoPago"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_marginTop="120dp"
+                android:layout_marginBottom="119dp"
+                android:fontFamily="@font/roboto_black"
+                android:text="Metodo de pago"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_cambio"
+                app:layout_constraintEnd_toEndOf="@+id/txv_pago"
+                app:layout_constraintStart_toStartOf="@+id/btn_GuardarEmpleado"
+                app:layout_constraintTop_toTopOf="@+id/txv_total" />
+
+            <TextView
+                android:id="@+id/txv_subtotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="12dp"
+                android:fontFamily="@font/roboto_black"
+                android:text="Subtotal"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_subtotal"
+                app:layout_constraintStart_toStartOf="@+id/view" />
+
+            <EditText
+                android:id="@+id/txt_subtotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginEnd="26dp"
+                android:layout_marginBottom="517dp"
+                android:digits="abcdefghijklmnñopqrstuvxwyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÍÓÚáéíóúäëïöüÄËÏÖÜ"
+                android:ems="10"
+                android:fontFamily="@font/roboto_regular"
+                android:inputType="textPersonName"
+                android:maxLength="40"
+                android:minHeight="48dp"
+                android:textColorHint="#000000"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/view"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/txv_isv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="36dp"
+                android:fontFamily="@font/roboto_black"
+                android:text="ISV"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/txt_isv"
+                app:layout_constraintEnd_toStartOf="@+id/txt_isv" />
+
+            <EditText
+                android:id="@+id/txt_isv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:fontFamily="@font/roboto_regular"
+                android:inputType="textPersonName"
+                android:maxLength="40"
+                android:minHeight="48dp"
+                android:textColorHint="#000000"
+                app:layout_constraintStart_toStartOf="@+id/txt_subtotal"
+                app:layout_constraintTop_toBottomOf="@+id/txt_subtotal"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/txv_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="35dp"
+                android:fontFamily="@font/roboto_black"
+                android:text="Total"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/txt_total"
+                app:layout_constraintEnd_toStartOf="@+id/txt_total" />
+
+            <EditText
+                android:id="@+id/txt_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:fontFamily="@font/roboto_regular"
+                android:inputType="textPersonName"
+                android:maxLength="40"
+                android:minHeight="48dp"
+                android:textColorHint="#000000"
+                app:layout_constraintStart_toStartOf="@+id/txt_isv"
+                app:layout_constraintTop_toBottomOf="@+id/txt_isv"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/txv_pago"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="17dp"
+                android:layout_marginBottom="11dp"
+                android:fontFamily="@font/roboto_black"
+                android:text="Pago"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_pago"
+                app:layout_constraintEnd_toStartOf="@+id/txt_pago" />
+
+            <EditText
+                android:id="@+id/txt_pago"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="26dp"
+                android:layout_marginBottom="185dp"
+                android:ems="10"
+                android:fontFamily="@font/roboto_regular"
+                android:inputType="phone"
+                android:maxLength="8"
+                android:minHeight="48dp"
+                android:textColorHint="#000000"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/view"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/txv_cambio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="18dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/roboto_black"
+                android:text="Cambio"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_cambio"
+                app:layout_constraintEnd_toStartOf="@+id/txt_cambio" />
+
+            <EditText
+                android:id="@+id/txt_cambio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:fontFamily="@font/roboto_regular"
+                android:inputType="textEmailAddress"
+                android:maxLength="50"
+                android:minHeight="48dp"
+                android:textColorHint="#000000"
+                app:layout_constraintStart_toStartOf="@+id/txt_pago"
+                app:layout_constraintTop_toBottomOf="@+id/txt_pago"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Button
+                android:id="@+id/btn_GuardarEmpleado"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="49dp"
+                android:background="@drawable/disquete"
+                android:backgroundTint="@color/rosado1"
+                app:layout_constraintBottom_toBottomOf="@+id/view"
+                app:layout_constraintEnd_toStartOf="@+id/txv_cambio"
+                app:layout_constraintStart_toStartOf="@+id/txv_cambio"
+                app:layout_constraintTop_toBottomOf="@+id/txv_cambio"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+            <Button
+                android:id="@+id/btn_ActualizarEmpleado"
+                android:layout_width="48dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="95dp"
+                android:layout_marginTop="56dp"
+                android:layout_marginEnd="96dp"
+                android:layout_marginBottom="54dp"
+                android:background="@drawable/updating"
+                android:backgroundTint="@color/rosado1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/btn_BorrarEmpleado"
+                app:layout_constraintStart_toStartOf="@+id/btn_GuardarEmpleado"
+                app:layout_constraintTop_toTopOf="@+id/txv_cambio"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+            <Button
+                android:id="@+id/btn_BorrarEmpleado"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="70dp"
+                android:layout_marginEnd="70dp"
+                android:background="@drawable/delete"
+                android:backgroundTint="@color/rosado1"
+                app:layout_constraintBaseline_toBaselineOf="@+id/btn_buscarEmpleado"
+                app:layout_constraintEnd_toEndOf="@+id/txt_cambio"
+                app:layout_constraintStart_toStartOf="@+id/btn_iniciarFactura"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+            <Button
+                android:id="@+id/btn_buscarEmpleado"
+                android:layout_width="48dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="37dp"
+                android:layout_marginEnd="33dp"
+                android:background="@drawable/lupa"
+                android:backgroundTint="@color/rosado1"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_ActualizarEmpleado"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btn_BorrarEmpleado"
+                app:layout_constraintTop_toTopOf="@+id/btn_ActualizarEmpleado"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck,DuplicateClickableBoundsCheck" />
+
+            <Spinner
+                android:id="@+id/spi_metodoPago"
+                android:layout_width="0dp"
+                android:layout_height="49dp"
+                android:layout_marginTop="123dp"
+                android:layout_marginBottom="123dp"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_cambio"
+                app:layout_constraintEnd_toEndOf="@+id/txt_pago"
+                app:layout_constraintStart_toStartOf="@+id/txt_pago"
+                app:layout_constraintTop_toTopOf="@+id/txv_total"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Button
+                android:id="@+id/btn_producto1"
+                android:layout_width="0dp"
+                android:layout_height="110dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="124dp"
+                android:layout_marginEnd="28dp"
+                android:layout_marginBottom="128dp"
+                android:backgroundTint="@color/rosado1"
+                android:drawableLeft="@drawable/baleadasencilla"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Baleada sencilla"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_producto2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imv_cliente" />
+
+            <Button
+                android:id="@+id/btn_producto2"
+                android:layout_width="0dp"
+                android:layout_height="110dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="294dp"
+                android:layout_marginEnd="28dp"
+                android:layout_marginBottom="290dp"
+                android:backgroundTint="@color/rosado1"
+                android:drawableLeft="@drawable/baleadacarne"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Baleada carne"
+                app:layout_constraintBottom_toTopOf="@+id/btn_producto5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/spi_nombreCliente" />
+
+            <Button
+                android:id="@+id/btn_producto3"
+                android:layout_width="0dp"
+                android:layout_height="110dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="449dp"
+                android:layout_marginEnd="28dp"
+                android:layout_marginBottom="450dp"
+                android:backgroundTint="@color/rosado1"
+                android:drawableLeft="@drawable/baleada_con_todo"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Baleada con todo"
+                app:layout_constraintBottom_toTopOf="@+id/btn_producto7"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imv_iconoUsuario_empleados" />
+
+            <Button
+                android:id="@+id/btn_producto4"
+                android:layout_width="0dp"
+                android:layout_height="110dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="136dp"
+                android:layout_marginEnd="28dp"
+                android:layout_marginBottom="140dp"
+                android:backgroundTint="@color/rosado1"
+                android:drawableLeft="@drawable/carneasada"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Carne asada"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_producto5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/btn_producto3" />
+
+            <Button
+                android:id="@+id/btn_producto5"
+                android:layout_width="0dp"
+                android:layout_height="110dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="572dp"
+                android:layout_marginEnd="28dp"
+                android:layout_marginBottom="572dp"
+                android:backgroundTint="@color/rosado1"
+                android:drawableLeft="@drawable/pollo"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Pollo chuco"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_producto9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_iniciarFactura" />
+
+            <Button
+                android:id="@+id/btn_producto6"
+                android:layout_width="0dp"
+                android:layout_height="110dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="140dp"
+                android:layout_marginEnd="28dp"
+                android:layout_marginBottom="144dp"
+                android:backgroundTint="@color/rosado1"
+                android:drawableLeft="@drawable/cena"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Cena típica"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_producto7"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/btn_producto5" />
+
+            <Button
+                android:id="@+id/btn_producto7"
+                android:layout_width="0dp"
+                android:layout_height="110dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="1145dp"
+                android:layout_marginEnd="28dp"
+                android:layout_marginBottom="1145dp"
+                android:backgroundTint="@color/rosado1"
+                android:drawableLeft="@drawable/refresconatural"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Refresco natural"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_total"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txv_tituloEmpleados" />
+
+            <Button
+                android:id="@+id/btn_producto8"
+                android:layout_width="0dp"
+                android:layout_height="110dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="148dp"
+                android:layout_marginEnd="28dp"
+                android:layout_marginBottom="140dp"
+                android:backgroundTint="@color/rosado1"
+                android:drawableLeft="@drawable/logococa"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Gaseosa"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_producto9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/btn_producto7" />
+
+            <Button
+                android:id="@+id/btn_producto9"
+                android:layout_width="0dp"
+                android:layout_height="110dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="1192dp"
+                android:layout_marginEnd="28dp"
+                android:layout_marginBottom="1192dp"
+                android:backgroundTint="@color/rosado1"
+                android:drawableLeft="@drawable/desayuno"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Desayuno típico"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_buscarEmpleado"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/btn_iniciarFactura" />
+
+            <ListView
+                android:id="@+id/_dynamic"
+                android:layout_width="0dp"
+                android:layout_height="555dp"
+                android:layout_marginStart="23dp"
+                android:layout_marginTop="189dp"
+                android:layout_marginEnd="23dp"
+                android:layout_marginBottom="189dp"
+                android:entries="@android:array/emailAddressTypes"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_isv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_producto8"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="52dp"
+                android:layout_marginEnd="54dp"
+                android:layout_marginBottom="1837dp"
+                app:layout_constraintBottom_toTopOf="@+id/imageView3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/btn_producto1"
+                app:layout_constraintTop_toBottomOf="@+id/txv_tituloEmpleados"
+                app:srcCompat="@drawable/horizontal_line" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

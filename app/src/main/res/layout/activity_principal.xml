@@ -9,50 +9,16 @@
 
     <View
         android:id="@+id/viw_blancoPrincipal"
-        android:layout_width="0dp"
-        android:layout_height="606dp"
+        android:layout_width="368dp"
+        android:layout_height="813dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
         android:background="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn_empleados"
-        android:layout_width="0dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="108dp"
-        android:layout_marginBottom="107dp"
-        android:backgroundTint="@color/rosado1"
-        android:fontFamily="@font/roboto_regular"
-        android:text="@string/empleados"
-        app:iconTint="@color/rosado1"
-        app:layout_constraintBottom_toTopOf="@+id/btn_inventario"
-        app:layout_constraintEnd_toEndOf="@+id/btn_clientes"
-        app:layout_constraintStart_toStartOf="@+id/btn_clientes"
-        app:layout_constraintTop_toTopOf="@+id/imv_iconoUsuario_principal"
-        app:rippleColor="@color/rosado2"
-        tools:ignore="TextContrastCheck" />
-
-    <Button
-        android:id="@+id/btn_facturacion"
-        android:layout_width="0dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginBottom="41dp"
-        android:backgroundTint="@color/rosado1"
-        android:fontFamily="@font/roboto_regular"
-        android:text="@string/facturacion"
-        app:iconTint="@color/rosado1"
-        app:layout_constraintBottom_toTopOf="@+id/imv_cerrarSesion"
-        app:layout_constraintEnd_toEndOf="@+id/btn_inventario"
-        app:layout_constraintStart_toStartOf="@+id/btn_clientes"
-        app:layout_constraintTop_toBottomOf="@+id/btn_inventario"
-        app:rippleColor="@color/rosado2"
-        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/textView2"
@@ -68,36 +34,87 @@
         app:layout_constraintStart_toEndOf="@+id/imv_iconoUsuario_principal" />
 
     <Button
-        android:id="@+id/btn_inventario"
-        android:layout_width="0dp"
-        android:layout_height="58dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginBottom="122dp"
-        android:backgroundTint="@color/rosado1"
-        android:fontFamily="@font/roboto_regular"
-        android:text="@string/inventario"
-        app:iconTint="@color/rosado1"
-        app:layout_constraintBottom_toTopOf="@+id/imv_cerrarSesion"
-        app:layout_constraintEnd_toEndOf="@+id/textView2"
-        app:layout_constraintStart_toStartOf="@+id/btn_clientes"
-        app:rippleColor="@color/rosado2"
-        tools:ignore="TextContrastCheck" />
-
-    <Button
         android:id="@+id/btn_clientes"
         android:layout_width="177dp"
         android:layout_height="52dp"
         android:layout_marginTop="166dp"
         android:layout_marginBottom="166dp"
         android:backgroundTint="@color/rosado1"
-        android:fontFamily="@font/roboto_regular"
+        android:fontFamily="@font/roboto_bold"
         android:text="@string/clientes"
         app:iconTint="@color/rosado1"
         app:layout_constraintBottom_toBottomOf="@+id/btn_facturacion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView2"
+        app:layout_constraintVertical_bias="1.0"
+        app:rippleColor="@color/rosado2"
+        tools:ignore="TextContrastCheck" />
+
+    <Button
+        android:id="@+id/btn_inventario"
+        android:layout_width="0dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="128dp"
+        android:backgroundTint="@color/rosado1"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/inventario"
+        app:iconTint="@color/rosado1"
+        app:layout_constraintBottom_toTopOf="@+id/imv_cerrarSesion"
+        app:layout_constraintEnd_toEndOf="@+id/textView2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_clientes"
+        app:rippleColor="@color/rosado2"
+        tools:ignore="TextContrastCheck" />
+
+    <Button
+        android:id="@+id/btn_facturacion"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginBottom="41dp"
+        android:backgroundTint="@color/rosado1"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/facturacion"
+        app:iconTint="@color/rosado1"
+        app:layout_constraintBottom_toTopOf="@+id/imv_cerrarSesion"
+        app:layout_constraintEnd_toEndOf="@+id/btn_inventario"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_clientes"
+        app:layout_constraintTop_toBottomOf="@+id/btn_inventario"
+        app:layout_constraintVertical_bias="0.666"
+        app:rippleColor="@color/rosado2"
+        tools:ignore="TextContrastCheck" />
+
+    <ImageView
+        android:id="@+id/imv_cerrarSesion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="288dp"
+        app:layout_constraintBottom_toBottomOf="@+id/viw_blancoPrincipal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/cerrar_sesion" />
+
+    <Button
+        android:id="@+id/btn_empleados"
+        android:layout_width="0dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="108dp"
+        android:layout_marginBottom="107dp"
+        android:backgroundTint="@color/rosado1"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/empleados"
+        app:iconTint="@color/rosado1"
+        app:layout_constraintBottom_toTopOf="@+id/btn_inventario"
+        app:layout_constraintEnd_toEndOf="@+id/btn_clientes"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_clientes"
+        app:layout_constraintTop_toTopOf="@+id/imv_iconoUsuario_principal"
+        app:layout_constraintVertical_bias="1.0"
         app:rippleColor="@color/rosado2"
         tools:ignore="TextContrastCheck" />
 
@@ -110,15 +127,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/viw_blancoPrincipal"
         app:srcCompat="@drawable/profile" />
-
-    <ImageView
-        android:id="@+id/imv_cerrarSesion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="77dp"
-        app:layout_constraintBottom_toBottomOf="@+id/viw_blancoPrincipal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/cerrar_sesion" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

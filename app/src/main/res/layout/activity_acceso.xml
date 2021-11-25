@@ -45,7 +45,7 @@
         app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/txt_contraseña"
         app:rippleColor="@color/rosado2"
         tools:ignore="TextContrastCheck" />
 
@@ -89,8 +89,8 @@
         android:layout_marginEnd="14dp"
         android:layout_marginBottom="10dp"
         android:contentDescription="@string/icono"
-        app:layout_constraintBottom_toBottomOf="@+id/textInputLayout"
-        app:layout_constraintEnd_toStartOf="@+id/textInputLayout"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_contraseña"
+        app:layout_constraintEnd_toStartOf="@+id/txt_contraseña"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/candado_cerrado" />
 
@@ -108,7 +108,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
+        android:id="@+id/txt_contraseña"
         android:layout_width="0dp"
         android:layout_height="57dp"
         android:layout_marginEnd="57dp"
@@ -119,6 +119,7 @@
         app:layout_constraintTop_toTopOf="@+id/viw_blanco">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_contraseña2"
             android:layout_width="255dp"
             android:layout_height="wrap_content"
             android:background="@color/white"

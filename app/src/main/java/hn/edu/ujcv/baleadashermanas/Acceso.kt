@@ -14,14 +14,16 @@ import retrofit2.Response
 import org.apache.commons.codec.digest.DigestUtils
 
 class Acceso : AppCompatActivity() {
-    var loginSatisfactorio = false
+    var nombreUsuario: String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_acceso)
         btn_ingresar.setOnClickListener {
-           //v -> callServiceGetCredenciales()
-            val intent = Intent(this@Acceso, Principal::class.java)
-            startActivity(intent)
+           v -> callServiceGetCredenciales()
+            /*val intent = Intent(this@Acceso, Principal::class.java)
+            nombreUsuario = "juan.asdasdasda"
+            intent.putExtra("nombreUsuario", nombreUsuario)
+            startActivity(intent)*/
         }
     }
 
@@ -33,22 +35,27 @@ class Acceso : AppCompatActivity() {
             val contraseña = txt_contraseña2.text.toString()
             val contraseñaEncriptada = DigestUtils.md5Hex(contraseña)
             val result: Call<EmpleadosDataCollectionItem> =
-                personService.loginEmpleado(usuario, contraseñaEncriptada)
+                personService.login(usuario, contraseñaEncriptada)
 
             result.enqueue(object : Callback<EmpleadosDataCollectionItem> {
                 override fun onResponse(
                     call: Call<EmpleadosDataCollectionItem>,
                     response: Response<EmpleadosDataCollectionItem>
                 ) {
-                    loginSatisfactorio = false
-                    Toast.makeText(this@Acceso, "bueno", Toast.LENGTH_LONG).show()
+                    if(response!!.body() == null){
+                        Toast.makeText(this@Acceso, "Contraseña o usuario incorrecto", Toast.LENGTH_LONG).show()
+                    }
+                    else{
+                        nombreUsuario = response.body()!!.usuario
+                        Toast.makeText(this@Acceso, "Bienvenido (a): ${nombreUsuario}", Toast.LENGTH_LONG).show()
+                        val intent = Intent(this@Acceso,Principal::class.java)
+                        intent.putExtra("nombreUsuario", nombreUsuario)
+                        startActivity(intent)
+                    }
                 }
 
                 override fun onFailure(call: Call<EmpleadosDataCollectionItem>, t: Throwable) {
-                    /*loginSatisfactorio = true
-                    Toast.makeText(this@Acceso, "Inicio", Toast.LENGTH_LONG).show()
-                    */
-                    Toast.makeText(this@Acceso, "malo", Toast.LENGTH_LONG).show()
+
                 }
             }
             )

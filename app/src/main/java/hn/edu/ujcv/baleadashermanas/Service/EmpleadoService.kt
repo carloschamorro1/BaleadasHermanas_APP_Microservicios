@@ -16,7 +16,7 @@ interface EmpleadoService {
     fun getEmpleadoByDNI(@Path("dni") dni: Long): Call<EmpleadosDataCollectionItem>
 
     @GET("empleado/login/{usuario}/{pass}")
-    fun loginEmpleado(@Path("usuario")usuario: String, @Path("pass")pass: String): Call<EmpleadosDataCollectionItem>
+    fun login(@Path("usuario")usuario: String, @Path("pass")pass: String): Call<EmpleadosDataCollectionItem>
 
     @Headers("Content-Type: application/json")
     @POST("empleado/addempleado")

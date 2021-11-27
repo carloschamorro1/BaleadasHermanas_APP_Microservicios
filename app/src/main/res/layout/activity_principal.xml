@@ -16,12 +16,12 @@
         android:layout_marginEnd="8dp"
         android:background="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.888"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/txv_labelNombreUsuarioPrincipal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="17dp"
@@ -46,7 +46,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/btn_facturacion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="@+id/txv_labelNombreUsuarioPrincipal"
         app:layout_constraintVertical_bias="1.0"
         app:rippleColor="@color/rosado2"
         tools:ignore="TextContrastCheck" />
@@ -62,8 +62,12 @@
         android:fontFamily="@font/roboto_bold"
         android:text="@string/inventario"
         app:iconTint="@color/rosado1"
+
+        app:layout_constraintBottom_toBottomOf="@+id/btn_facturacion"
+        app:layout_constraintEnd_toEndOf="@+id/btn_clientes"
+        app:layout_constraintTop_toTopOf="@+id/txv_labelNombreUsuarioPrincipal"
+        app:layout_constraintVertical_bias="1.0"
         app:layout_constraintBottom_toTopOf="@+id/imv_cerrarSesion"
-        app:layout_constraintEnd_toEndOf="@+id/textView2"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/btn_clientes"
         app:rippleColor="@color/rosado2"

@@ -192,6 +192,7 @@
                 android:layout_marginEnd="42dp"
                 android:background="@drawable/updating"
                 android:backgroundTint="@color/black"
+                android:enabled="false"
                 app:layout_constraintBottom_toBottomOf="@+id/btn_BorrarEmpleado"
                 app:layout_constraintEnd_toStartOf="@+id/btn_BorrarEmpleado"
                 app:layout_constraintStart_toEndOf="@+id/btn_GuardarEmpleado"
@@ -206,6 +207,7 @@
                 android:layout_marginEnd="44dp"
                 android:background="@drawable/delete"
                 android:backgroundTint="@color/black"
+                android:enabled="false"
                 app:layout_constraintBottom_toBottomOf="@+id/btn_buscarEmpleado"
                 app:layout_constraintEnd_toStartOf="@+id/btn_buscarEmpleado"
                 app:layout_constraintStart_toEndOf="@+id/btn_ActualizarEmpleado"
@@ -391,6 +393,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/txt_dniEmpledo">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_contraseñaEmpleado"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:background="@color/white"

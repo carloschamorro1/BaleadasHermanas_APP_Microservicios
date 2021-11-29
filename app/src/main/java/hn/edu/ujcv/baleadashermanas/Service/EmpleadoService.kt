@@ -13,7 +13,7 @@ interface EmpleadoService {
     fun getEmpleadoById(@Path("id") id: Long): Call<EmpleadosDataCollectionItem>
 
     @GET("empleado/dni/{dni}")
-    fun getEmpleadoByDNI(@Path("dni") dni: Long): Call<EmpleadosDataCollectionItem>
+    fun getEmpleadoByDNI(@Path("dni") dni: String): Call<EmpleadosDataCollectionItem>
 
     @GET("empleado/login/{usuario}/{pass}")
     fun login(@Path("usuario")usuario: String, @Path("pass")pass: String): Call<EmpleadosDataCollectionItem>

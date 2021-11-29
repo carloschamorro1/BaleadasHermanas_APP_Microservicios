@@ -16,21 +16,25 @@ class Principal : AppCompatActivity() {
         inicializar()
         btn_empleados.setOnClickListener {
             val intent = Intent(this, Empleados::class.java)
+            intent.putExtra("nombreUsuario", nombreUsuario)
             startActivity(intent)
         }
 
         btn_clientes.setOnClickListener {
             val intent = Intent(this, Clientes::class.java)
+            intent.putExtra("nombreUsuario", nombreUsuario)
             startActivity(intent)
         }
 
         btn_inventario.setOnClickListener {
             val intent = Intent(this, Inventario::class.java)
+            intent.putExtra("nombreUsuario", nombreUsuario)
             startActivity(intent)
         }
 
         btn_facturacion.setOnClickListener {
             val intent = Intent(this, Facturacion::class.java)
+            intent.putExtra("nombreUsuario", nombreUsuario)
             startActivity(intent)
         }
 

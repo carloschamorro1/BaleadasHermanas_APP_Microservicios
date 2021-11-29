@@ -395,7 +395,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txt_contraseñaEmpleado"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="55dp"
                     android:background="@color/white"
                     android:hint="@string/contraseña"
                     android:inputType="textPassword" />

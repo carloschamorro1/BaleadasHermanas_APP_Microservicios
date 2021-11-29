@@ -169,7 +169,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/txt_dniCliente" />
 
             <Button
-                android:id="@+id/btn_GuardarEmpleado"
+                android:id="@+id/btn_guardarCliente"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="71dp"
@@ -178,42 +178,42 @@
                 android:background="@drawable/disquete"
                 android:backgroundTint="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/btn_ActualizarEmpleado"
+                app:layout_constraintEnd_toStartOf="@+id/btn_actualizarCliente"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/btn_ActualizarEmpleado"
+                app:layout_constraintTop_toTopOf="@+id/btn_actualizarCliente"
                 app:layout_constraintVertical_bias="0.0"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
             <Button
-                android:id="@+id/btn_ActualizarEmpleado"
+                android:id="@+id/btn_actualizarCliente"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginEnd="42dp"
                 android:background="@drawable/updating"
                 android:backgroundTint="@color/black"
-                app:layout_constraintBottom_toBottomOf="@+id/btn_BorrarEmpleado"
-                app:layout_constraintEnd_toStartOf="@+id/btn_BorrarEmpleado"
-                app:layout_constraintStart_toEndOf="@+id/btn_GuardarEmpleado"
-                app:layout_constraintTop_toTopOf="@+id/btn_BorrarEmpleado"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_borrarCliente"
+                app:layout_constraintEnd_toStartOf="@+id/btn_borrarCliente"
+                app:layout_constraintStart_toEndOf="@+id/btn_guardarCliente"
+                app:layout_constraintTop_toTopOf="@+id/btn_borrarCliente"
                 app:layout_constraintVertical_bias="1.0"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
             <Button
-                android:id="@+id/btn_BorrarEmpleado"
+                android:id="@+id/btn_borrarCliente"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginEnd="44dp"
                 android:background="@drawable/delete"
                 android:backgroundTint="@color/black"
-                app:layout_constraintBottom_toBottomOf="@+id/btn_buscarEmpleado"
-                app:layout_constraintEnd_toStartOf="@+id/btn_buscarEmpleado"
-                app:layout_constraintStart_toEndOf="@+id/btn_ActualizarEmpleado"
-                app:layout_constraintTop_toTopOf="@+id/btn_buscarEmpleado"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_buscarCliente"
+                app:layout_constraintEnd_toStartOf="@+id/btn_buscarCliente"
+                app:layout_constraintStart_toEndOf="@+id/btn_actualizarCliente"
+                app:layout_constraintTop_toTopOf="@+id/btn_buscarCliente"
                 app:layout_constraintVertical_bias="0.0"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
             <Button
-                android:id="@+id/btn_buscarEmpleado"
+                android:id="@+id/btn_buscarCliente"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginEnd="60dp"
@@ -222,7 +222,7 @@
                 android:backgroundTint="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/btn_BorrarEmpleado"
+                app:layout_constraintStart_toEndOf="@+id/btn_borrarCliente"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck,DuplicateClickableBoundsCheck" />
 
             <EditText

@@ -15,6 +15,7 @@ import hn.edu.ujcv.baleadashermanas.Service.RestEngine
 import kotlinx.android.synthetic.main.activity_empleados.*
 import kotlinx.android.synthetic.main.activity_principal.*
 import okhttp3.ResponseBody
+import org.apache.commons.codec.digest.DigestUtils
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -22,6 +23,7 @@ import retrofit2.Response
 class Empleados : AppCompatActivity() {
     var nombreUsuario: String = ""
     var idEmpleado = ""
+    var dniEmpleado = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_empleados)
@@ -70,6 +72,9 @@ class Empleados : AppCompatActivity() {
         if(noLoSuficienteLargo()){
             return
         }
+
+        val contraseñaEncriptada = DigestUtils.md5Hex(txt_contraseñaEmpleado.text.toString())
+
         val empleadoInfo = EmpleadosDataCollectionItem(
             idempleado = 0, // Este se pone asi porque es automatico
             primer_nombre_empleado = txt_primerNombreEmpleado.text.toString(),
@@ -80,11 +85,11 @@ class Empleados : AppCompatActivity() {
             email_empleado= txt_emailEmpleado.text.toString(),
             dniempleado= txt_dniEmpledo.text.toString(),
             usuario= txt_usuarioEmpleado.text.toString() ,
-            contraseña = txt_contraseñaEmpleado.text.toString()
+            contraseña = contraseñaEncriptada
             )
         addCasoEmpleado(empleadoInfo) {
             if (it?.idempleado != null) {
-                Toast.makeText(this,"OK", Toast.LENGTH_LONG).show()
+                Toast.makeText(this,"Empleado añadido exitosamente", Toast.LENGTH_LONG).show()
             } else {
                 Toast.makeText(this,"Error", Toast.LENGTH_LONG).show()
             }
@@ -111,6 +116,8 @@ class Empleados : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val addedCasoEmpleado = response.body()!!
                     onResult(addedCasoEmpleado)
+                    accionesPorDefecto()
+                    limpiar()
                 }
                 /*else if (response.code() == 401){
                     Toast.makeText(this@MainActivity,"Sesion expirada",Toast.LENGTH_LONG).show()
@@ -131,6 +138,26 @@ class Empleados : AppCompatActivity() {
 
         }
         )
+    }
+
+    private fun accionesPorDefecto(){
+        btn_GuardarEmpleado.isEnabled = true
+        btn_ActualizarEmpleado.isEnabled = false
+        btn_BorrarEmpleado.isEnabled = false
+        btn_buscarEmpleado.isEnabled = true
+    }
+
+    private fun limpiar(){
+        txt_primerNombreEmpleado.setText("")
+        txt_segundoNombreEmpleado.setText("")
+        txt_primerApellidoEmpleado.setText("")
+        txt_segundoApellidoEmpleado.setText("")
+        txt_telefonoEmpleado.setText("")
+        txt_emailEmpleado.setText("")
+        txt_dniEmpledo.setText("")
+        txt_usuarioEmpleado.setText("")
+        txt_contraseñaEmpleado.setText("")
+
     }
 
     private fun estaVacio():Boolean{
@@ -193,52 +220,14 @@ class Empleados : AppCompatActivity() {
         return false
     }
 
-    private fun callServiceGetIDbyDNI(dni: String){
-        val empleadoService: EmpleadoService = RestEngine.buildService().create(EmpleadoService::class.java)
-        var result: Call<EmpleadosDataCollectionItem> = empleadoService.getEmpleadoByDNI(dni)
-
-        result.enqueue(object :  Callback<EmpleadosDataCollectionItem> {
-            override fun onFailure(call: Call<EmpleadosDataCollectionItem>, t: Throwable) {
-                Toast.makeText(this@Empleados,"Error",Toast.LENGTH_LONG).show()
-            }
-            override fun onResponse(
-                call: Call<EmpleadosDataCollectionItem>,
-                response: Response<EmpleadosDataCollectionItem>
-            ) {
-                txv_labelNombreUsuarioEmpleados.setText(response!!.body()?.idempleado.toString())
-                Toast.makeText(this@Empleados,"Id capturado",Toast.LENGTH_LONG).show()
-            }
-
-            }
-        )
-    }
-
-
-    fun actualizarCasoEmpleado(view: View) {
-        if(estaVacio()){
-            return
-        }
-        if(noLoSuficienteLargo()){
-            return
-        }
-        val builder = AlertDialog.Builder(this)
-        val inflater = layoutInflater
-        builder.setTitle("Ingrese el DNI del empleado")
-        builder.setMessage("Por favor ingrese el DNI del empleado a buscar, en caso de querer verificar nuevamente presione el boton \"Cancelar\"")
-        val dialogLayout = inflater.inflate(R.layout.alert_dialog_empleado, null)
-        val editText  = dialogLayout.findViewById<EditText>(R.id.editText)
-        builder.setView(dialogLayout)
-        builder.setPositiveButton("Enviar") { dialogInterface, i ->
-            if(editText.text.toString() == ""){
-                Toast.makeText(this, "No puede dejar el DNI vacío", Toast.LENGTH_SHORT).show()
-                return@setPositiveButton
-            }
-        }
-        builder.setNegativeButton("Cancelar"){dialogInterface, i -> return@setNegativeButton}
-        builder.show()
-    }
-
     private fun callServicePutCasoEmpleado() {
+
+        var contraseñaEncriptada = ""
+        if(txt_contraseñaEmpleado.text.toString().equals("")){
+            contraseñaEncriptada = ""
+        }else{
+            contraseñaEncriptada  = DigestUtils.md5Hex(txt_contraseñaEmpleado.text.toString())
+        }
 
         val casoempleadoInfo = EmpleadosDataCollectionItem(
             idempleado = idEmpleado.toLong(), // Este se pone asi porque es automatico
@@ -250,7 +239,7 @@ class Empleados : AppCompatActivity() {
             email_empleado= txt_emailEmpleado.text.toString(),
             dniempleado= txt_dniEmpledo.text.toString(),
             usuario= txt_usuarioEmpleado.text.toString() ,
-            contraseña = txt_contraseñaEmpleado.text.toString()
+            contraseña = contraseñaEncriptada
         )
 
         val retrofit = RestEngine.buildService().create(EmpleadoService::class.java)
@@ -266,6 +255,8 @@ class Empleados : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val updatedPerson = response.body()!!
                     Toast.makeText(this@Empleados,"Actualizado correctamente", Toast.LENGTH_LONG).show()
+                    accionesPorDefecto()
+                    limpiar()
                 }
                 else if (response.code() == 401){
                     Toast.makeText(this@Empleados,"Sesion expirada", Toast.LENGTH_LONG).show()
@@ -278,24 +269,6 @@ class Empleados : AppCompatActivity() {
         })
     }
 
-    fun borrarCasoEmpleado(view: View){
-        val builder = AlertDialog.Builder(this)
-        val inflater = layoutInflater
-        builder.setTitle("Ingrese el DNI del empleado")
-        builder.setMessage("Por favor ingrese el DNI del empleado a buscar, en caso de querer verificar nuevamente presione el boton \"Cancelar\"")
-        val dialogLayout = inflater.inflate(R.layout.alert_dialog_empleado, null)
-        val editText  = dialogLayout.findViewById<EditText>(R.id.editText)
-        builder.setView(dialogLayout)
-        builder.setPositiveButton("Enviar") { dialogInterface, i ->
-            if(editText.text.toString() == ""){
-                Toast.makeText(this, "No puede dejar el DNI vacío", Toast.LENGTH_SHORT).show()
-                return@setPositiveButton
-            }
-            callServiceDeleteCasoEmpleado()
-        }
-        builder.setNegativeButton("Cancelar"){dialogInterface, i -> return@setNegativeButton}
-        builder.show()
-    }
 
     fun buscarEmpleado(){
         val builder = AlertDialog.Builder(this)
@@ -328,6 +301,12 @@ class Empleados : AppCompatActivity() {
                 call: Call<EmpleadosDataCollectionItem>,
                 response: Response<EmpleadosDataCollectionItem>
             ) {
+
+                if(response!!.body() == null){
+                    Toast.makeText(this@Empleados, "El empleado no existe", Toast.LENGTH_LONG).show()
+                    return
+                }
+
                 txt_primerNombreEmpleado.setText(response.body()?.primer_nombre_empleado)
                 txt_segundoNombreEmpleado.setText(response.body()?.segundo_nombre_empleado)
                 txt_primerApellidoEmpleado.setText(response.body()?.primer_apellido_empleado)
@@ -337,6 +316,7 @@ class Empleados : AppCompatActivity() {
                 txt_dniEmpledo.setText(response.body()?.dniempleado)
                 txt_usuarioEmpleado.setText(response.body()?.usuario)
                 idEmpleado = response.body()?.idempleado.toString()
+                dniEmpleado = response.body()?.dniempleado.toString()
                 accionesBuscar()
                 Toast.makeText(this@Empleados,"Empleado recuperado exitosamente",Toast.LENGTH_LONG).show()
             }
@@ -362,7 +342,9 @@ class Empleados : AppCompatActivity() {
                 response: Response<ResponseBody>
             ) {
                 if (response.isSuccessful) {
-                    Toast.makeText(this@Empleados, "DELETE", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Empleados, "Eliminado correctamente", Toast.LENGTH_LONG).show()
+                    accionesPorDefecto()
+                    limpiar()
                 } else if (response.code() == 401) {
                     Toast.makeText(this@Empleados, "Sesion expirada", Toast.LENGTH_LONG)
                         .show()

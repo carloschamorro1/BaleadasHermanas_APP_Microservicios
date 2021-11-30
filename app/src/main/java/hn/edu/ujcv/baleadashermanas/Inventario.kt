@@ -97,7 +97,6 @@ class Inventario : AppCompatActivity() {
                     return
                 }
                 idEmpleado = response.body()?.idempleado.toString()
-                Toast.makeText(this@Inventario,"ID recuperado recuperado exitosamente",Toast.LENGTH_LONG).show()
             }
 
         }

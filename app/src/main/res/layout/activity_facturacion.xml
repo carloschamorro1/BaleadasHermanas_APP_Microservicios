@@ -42,39 +42,27 @@
             <ImageView
                 android:id="@+id/imageView3"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_height="15dp"
                 android:layout_marginStart="53dp"
                 android:layout_marginEnd="53dp"
                 android:layout_marginBottom="609dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2"
                 app:srcCompat="@drawable/horizontal_line" />
 
             <TextView
-                android:id="@+id/txv_labelNombreUsuarioEmpleados2"
+                android:id="@+id/txv_labelNombreUsuarioFacturacion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:fontFamily="@font/roboto_bold"
-                android:text="@string/nombreUsuario"
-                android:textColor="#020202"
-                android:textSize="20sp"
-                app:layout_constraintBaseline_toBaselineOf="@+id/txv_labelNombreUsuarioEmpleados"
-                app:layout_constraintStart_toEndOf="@+id/imv_iconoUsuario_empleados" />
-
-            <TextView
-                android:id="@+id/txv_labelNombreUsuarioEmpleados"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="14dp"
+                android:layout_marginBottom="13dp"
                 android:fontFamily="@font/roboto_bold"
                 android:text="@string/nombreUsuario"
                 android:textColor="#020202"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="@+id/imv_iconoUsuario_empleados"
-                app:layout_constraintStart_toStartOf="@+id/txv_labelNombreUsuarioEmpleados2" />
+                app:layout_constraintStart_toEndOf="@+id/imv_iconoUsuario_empleados" />
 
             <ImageView
                 android:id="@+id/imv_iconoUsuario_empleados"
@@ -93,13 +81,11 @@
                 android:layout_marginStart="71dp"
                 android:layout_marginTop="11dp"
                 android:layout_marginEnd="18dp"
-                android:layout_marginBottom="249dp"
                 android:fontFamily="@font/roboto_bold"
                 android:text="@string/facturacion"
                 android:textColor="@color/black"
                 android:textSize="40sp"
                 android:textStyle="normal"
-                app:layout_constraintBottom_toTopOf="@+id/imageView2"
                 app:layout_constraintEnd_toStartOf="@+id/btn_menuPrincipalFacturacion"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -112,7 +98,7 @@
                 android:layout_marginEnd="42dp"
                 android:contentDescription="@string/icono"
                 app:layout_constraintBottom_toBottomOf="@+id/spi_nombreCliente"
-                app:layout_constraintEnd_toStartOf="@+id/txv_labelNombreUsuarioEmpleados2"
+                app:layout_constraintEnd_toStartOf="@+id/txv_labelNombreUsuarioFacturacion"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/spi_nombreCliente"
                 app:srcCompat="@drawable/cliente" />
@@ -140,146 +126,139 @@
                 app:layout_constraintBottom_toBottomOf="@+id/btn_iniciarFactura"
                 app:layout_constraintEnd_toEndOf="@+id/_dynamic"
                 app:layout_constraintStart_toStartOf="@+id/txv_tituloEmpleados"
-                app:layout_constraintTop_toTopOf="@+id/txv_labelNombreUsuarioEmpleados2"
+                app:layout_constraintTop_toTopOf="@+id/txv_labelNombreUsuarioFacturacion"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <Button
                 android:id="@+id/btn_iniciarFactura"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="252dp"
-                android:layout_marginEnd="40dp"
+                android:layout_marginTop="256dp"
+                android:layout_marginEnd="96dp"
                 android:backgroundTint="@color/rosado1"
                 android:fontFamily="@font/roboto_bold"
                 android:text="Iniciar"
-                app:layout_constraintEnd_toEndOf="@+id/txv_labelNombreUsuarioEmpleados2"
-                app:layout_constraintStart_toEndOf="@+id/txv_metodoPago"
+                app:layout_constraintEnd_toEndOf="@+id/spi_nombreCliente"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/txv_metodoPago"
+                android:id="@+id/txv_subtotal"
                 android:layout_width="0dp"
                 android:layout_height="56dp"
                 android:layout_marginTop="120dp"
                 android:layout_marginBottom="119dp"
                 android:fontFamily="@font/roboto_black"
-                android:text="Metodo de pago"
+                android:text="Subtotal"
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@+id/txt_cambio"
-                app:layout_constraintEnd_toEndOf="@+id/txv_pago"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_total"
+                app:layout_constraintEnd_toEndOf="@+id/txv_isv"
                 app:layout_constraintStart_toStartOf="@+id/btn_GuardarEmpleado"
-                app:layout_constraintTop_toTopOf="@+id/txv_total" />
+                app:layout_constraintTop_toTopOf="@+id/txv_cambio" />
 
             <TextView
-                android:id="@+id/txv_subtotal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/txv_metodoPago"
+                android:layout_width="67dp"
+                android:layout_height="38dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginBottom="12dp"
                 android:fontFamily="@font/roboto_black"
-                android:text="Subtotal"
+                android:text="Método de pago"
+                android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@+id/txt_subtotal"
+                app:layout_constraintBottom_toBottomOf="@+id/spi_metodoPago"
                 app:layout_constraintStart_toStartOf="@+id/view" />
 
-            <EditText
-                android:id="@+id/txt_subtotal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <Spinner
+                android:id="@+id/spi_metodoPago"
+                android:layout_width="212dp"
+                android:layout_height="59dp"
 
                 android:layout_marginEnd="26dp"
                 android:layout_marginBottom="517dp"
-                android:digits="abcdefghijklmnñopqrstuvxwyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÍÓÚáéíóúäëïöüÄËÏÖÜ"
-                android:ems="10"
-                android:fontFamily="@font/roboto_regular"
-                android:inputType="textPersonName"
-                android:maxLength="40"
-                android:minHeight="48dp"
-                android:textColorHint="#000000"
+
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/view"
-                tools:ignore="SpeakableTextPresentCheck" />
-
-            <TextView
-                android:id="@+id/txv_isv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="36dp"
-                android:fontFamily="@font/roboto_black"
-                android:text="ISV"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                app:layout_constraintBaseline_toBaselineOf="@+id/txt_isv"
-                app:layout_constraintEnd_toStartOf="@+id/txt_isv" />
-
-            <EditText
-                android:id="@+id/txt_isv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:ems="10"
-                android:fontFamily="@font/roboto_regular"
-                android:inputType="textPersonName"
-                android:maxLength="40"
-                android:minHeight="48dp"
-                android:textColorHint="#000000"
-                app:layout_constraintStart_toStartOf="@+id/txt_subtotal"
-                app:layout_constraintTop_toBottomOf="@+id/txt_subtotal"
-                tools:ignore="SpeakableTextPresentCheck" />
-
-            <TextView
-                android:id="@+id/txv_total"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="35dp"
-                android:fontFamily="@font/roboto_black"
-                android:text="Total"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                app:layout_constraintBaseline_toBaselineOf="@+id/txt_total"
-                app:layout_constraintEnd_toStartOf="@+id/txt_total" />
-
-            <EditText
-                android:id="@+id/txt_total"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:ems="10"
-                android:fontFamily="@font/roboto_regular"
-                android:inputType="textPersonName"
-                android:maxLength="40"
-                android:minHeight="48dp"
-                android:textColorHint="#000000"
-                app:layout_constraintStart_toStartOf="@+id/txt_isv"
-                app:layout_constraintTop_toBottomOf="@+id/txt_isv"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <TextView
                 android:id="@+id/txv_pago"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="17dp"
-                android:layout_marginBottom="11dp"
+                android:layout_marginEnd="36dp"
                 android:fontFamily="@font/roboto_black"
                 android:text="Pago"
                 android:textColor="#000000"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@+id/txt_pago"
+                app:layout_constraintBaseline_toBaselineOf="@+id/txt_pago"
                 app:layout_constraintEnd_toStartOf="@+id/txt_pago" />
 
             <EditText
                 android:id="@+id/txt_pago"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:fontFamily="@font/roboto_regular"
+                android:inputType="numberDecimal"
+                android:maxLength="15"
+                android:minHeight="48dp"
+                android:textColorHint="#000000"
+                app:layout_constraintStart_toStartOf="@+id/spi_metodoPago"
+                app:layout_constraintTop_toBottomOf="@+id/spi_metodoPago"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/txv_cambio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="35dp"
+                android:fontFamily="@font/roboto_black"
+                android:text="Cambio"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/txt_cambio"
+                app:layout_constraintEnd_toStartOf="@+id/txt_cambio" />
+
+            <EditText
+                android:id="@+id/txt_cambio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:fontFamily="@font/roboto_regular"
+                android:inputType="numberDecimal"
+                android:maxLength="15"
+                android:minHeight="48dp"
+                android:textColorHint="#000000"
+                app:layout_constraintStart_toStartOf="@+id/txt_pago"
+                app:layout_constraintTop_toBottomOf="@+id/txt_pago"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/txv_isv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="17dp"
+                android:layout_marginBottom="11dp"
+                android:fontFamily="@font/roboto_black"
+                android:text="ISV"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_isv"
+                app:layout_constraintEnd_toStartOf="@+id/txt_isv" />
+
+            <EditText
+                android:id="@+id/txt_isv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="26dp"
                 android:layout_marginBottom="185dp"
                 android:ems="10"
                 android:fontFamily="@font/roboto_regular"
-                android:inputType="phone"
+                android:inputType="number"
                 android:maxLength="8"
                 android:minHeight="48dp"
                 android:textColorHint="#000000"
@@ -288,31 +267,31 @@
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <TextView
-                android:id="@+id/txv_cambio"
+                android:id="@+id/txv_total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="18dp"
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/roboto_black"
-                android:text="Cambio"
+                android:text="Total"
                 android:textColor="#000000"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@+id/txt_cambio"
-                app:layout_constraintEnd_toStartOf="@+id/txt_cambio" />
+                app:layout_constraintBottom_toBottomOf="@+id/txt_total"
+                app:layout_constraintEnd_toStartOf="@+id/txt_total" />
 
             <EditText
-                android:id="@+id/txt_cambio"
+                android:id="@+id/txt_total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:ems="10"
                 android:fontFamily="@font/roboto_regular"
                 android:inputType="textEmailAddress"
-                android:maxLength="50"
+                android:maxLength="15"
                 android:minHeight="48dp"
                 android:textColorHint="#000000"
-                app:layout_constraintStart_toStartOf="@+id/txt_pago"
-                app:layout_constraintTop_toBottomOf="@+id/txt_pago"
+                app:layout_constraintStart_toStartOf="@+id/txt_isv"
+                app:layout_constraintTop_toBottomOf="@+id/txt_isv"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <Button
@@ -324,9 +303,9 @@
                 android:background="@drawable/disquete"
                 android:backgroundTint="@color/rosado1"
                 app:layout_constraintBottom_toBottomOf="@+id/view"
-                app:layout_constraintEnd_toStartOf="@+id/txv_cambio"
-                app:layout_constraintStart_toStartOf="@+id/txv_cambio"
-                app:layout_constraintTop_toBottomOf="@+id/txv_cambio"
+                app:layout_constraintEnd_toStartOf="@+id/txv_total"
+                app:layout_constraintStart_toStartOf="@+id/txv_total"
+                app:layout_constraintTop_toBottomOf="@+id/txv_total"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
             <Button
@@ -342,7 +321,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/btn_BorrarEmpleado"
                 app:layout_constraintStart_toStartOf="@+id/btn_GuardarEmpleado"
-                app:layout_constraintTop_toTopOf="@+id/txv_cambio"
+                app:layout_constraintTop_toTopOf="@+id/txv_total"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
             <Button
@@ -354,7 +333,7 @@
                 android:background="@drawable/delete"
                 android:backgroundTint="@color/rosado1"
                 app:layout_constraintBaseline_toBaselineOf="@+id/btn_buscarEmpleado"
-                app:layout_constraintEnd_toEndOf="@+id/txt_cambio"
+                app:layout_constraintEnd_toEndOf="@+id/txt_total"
                 app:layout_constraintStart_toStartOf="@+id/btn_iniciarFactura"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
@@ -372,16 +351,23 @@
                 app:layout_constraintTop_toTopOf="@+id/btn_ActualizarEmpleado"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck,DuplicateClickableBoundsCheck" />
 
-            <Spinner
-                android:id="@+id/spi_metodoPago"
+            <EditText
+                android:id="@+id/txt_subtotal"
                 android:layout_width="0dp"
                 android:layout_height="49dp"
                 android:layout_marginTop="123dp"
                 android:layout_marginBottom="123dp"
-                app:layout_constraintBottom_toBottomOf="@+id/txt_cambio"
-                app:layout_constraintEnd_toEndOf="@+id/txt_pago"
-                app:layout_constraintStart_toStartOf="@+id/txt_pago"
-                app:layout_constraintTop_toTopOf="@+id/txv_total"
+                android:digits="abcdefghijklmnñopqrstuvxwyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZÁÉÍÓÚáéíóúäëïöüÄËÏÖÜ"
+                android:ems="10"
+                android:fontFamily="@font/roboto_regular"
+                android:inputType="textPersonName"
+                android:maxLength="40"
+                android:minHeight="48dp"
+                android:textColorHint="#000000"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_total"
+                app:layout_constraintEnd_toEndOf="@+id/txt_isv"
+                app:layout_constraintStart_toStartOf="@+id/txt_isv"
+                app:layout_constraintTop_toTopOf="@+id/txv_cambio"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <Button
@@ -498,7 +484,7 @@
                 android:drawableLeft="@drawable/refresconatural"
                 android:fontFamily="@font/roboto_bold"
                 android:text="Refresco natural"
-                app:layout_constraintBottom_toBottomOf="@+id/txt_total"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_cambio"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/txv_tituloEmpleados" />
@@ -546,25 +532,12 @@
                 android:layout_marginEnd="23dp"
                 android:layout_marginBottom="189dp"
                 android:entries="@android:array/emailAddressTypes"
-                app:layout_constraintBottom_toBottomOf="@+id/txt_isv"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_pago"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btn_producto8"
                 app:layout_constraintVertical_bias="0.0" />
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="52dp"
-                android:layout_marginEnd="54dp"
-                android:layout_marginBottom="1837dp"
-                app:layout_constraintBottom_toTopOf="@+id/imageView3"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/btn_producto1"
-                app:layout_constraintTop_toBottomOf="@+id/txv_tituloEmpleados"
-                app:srcCompat="@drawable/horizontal_line" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

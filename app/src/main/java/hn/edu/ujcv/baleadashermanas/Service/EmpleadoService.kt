@@ -15,6 +15,9 @@ interface EmpleadoService {
     @GET("empleado/dni/{dni}")
     fun getEmpleadoByDNI(@Path("dni") dni: String): Call<EmpleadosDataCollectionItem>
 
+    @GET("empleado/{usuario}")
+    fun getEmpleadoByUsuario(@Path("usuario") usuario: String): Call<EmpleadosDataCollectionItem>
+
     @GET("empleado/login/{usuario}/{pass}")
     fun login(@Path("usuario")usuario: String, @Path("pass")pass: String): Call<EmpleadosDataCollectionItem>
 

@@ -104,7 +104,7 @@
                 app:srcCompat="@drawable/pagar" />
 
             <Button
-                android:id="@+id/btn_BorrarEmpleado"
+                android:id="@+id/btn_borrarProducto"
                 android:layout_width="48dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="133dp"
@@ -115,46 +115,48 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/btn_GuardarEmpleado"
+                app:layout_constraintStart_toEndOf="@+id/btn_guardarProducto"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
             <Button
-                android:id="@+id/btn_GuardarEmpleado"
+                android:id="@+id/btn_guardarProducto"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/disquete"
                 android:backgroundTint="@color/black"
-                app:layout_constraintBaseline_toBaselineOf="@+id/btn_ActualizarEmpleado"
+                app:layout_constraintBaseline_toBaselineOf="@+id/btn_actualizarProducto"
                 app:layout_constraintEnd_toEndOf="@+id/imv_iconoUsuario_inventario"
                 app:layout_constraintStart_toStartOf="@+id/imv_iconoUsuario_inventario"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
             <Button
-                android:id="@+id/btn_ActualizarEmpleado"
+                android:id="@+id/btn_actualizarProducto"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="109dp"
                 android:layout_marginEnd="109dp"
                 android:background="@drawable/updating"
                 android:backgroundTint="@color/black"
-                app:layout_constraintBaseline_toBaselineOf="@+id/btn_BorrarEmpleado"
-                app:layout_constraintEnd_toEndOf="@+id/txv_labelNombreUsuarioInventario"
+                app:layout_constraintBaseline_toBaselineOf="@+id/btn_borrarProducto"
+                app:layout_constraintEnd_toEndOf="@+id/btn_borrarProducto"
+                app:layout_constraintHorizontal_bias="0.0"
+
                 app:layout_constraintStart_toStartOf="@+id/view"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
             <Button
-                android:id="@+id/btn_buscarEmpleado"
+                android:id="@+id/btn_buscarProducto"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="44dp"
                 android:layout_marginEnd="41dp"
                 android:background="@drawable/lupa"
                 android:backgroundTint="@color/black"
-                app:layout_constraintBaseline_toBaselineOf="@+id/btn_BorrarEmpleado"
+                app:layout_constraintBaseline_toBaselineOf="@+id/btn_borrarProducto"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/btn_BorrarEmpleado"
+                app:layout_constraintStart_toEndOf="@+id/btn_borrarProducto"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck,DuplicateClickableBoundsCheck" />
 
             <EditText
@@ -243,8 +245,8 @@
                 android:layout_marginEnd="54dp"
                 android:layout_marginBottom="86dp"
                 app:layout_constraintBottom_toBottomOf="@+id/txt_precioProducto"
-                app:layout_constraintEnd_toEndOf="@+id/btn_buscarEmpleado"
-                app:layout_constraintStart_toStartOf="@+id/btn_GuardarEmpleado"
+                app:layout_constraintEnd_toEndOf="@+id/btn_buscarProducto"
+                app:layout_constraintStart_toStartOf="@+id/btn_guardarProducto"
                 app:layout_constraintTop_toTopOf="@+id/imv_cantidadProducto"
                 tools:ignore="SpeakableTextPresentCheck" />
 

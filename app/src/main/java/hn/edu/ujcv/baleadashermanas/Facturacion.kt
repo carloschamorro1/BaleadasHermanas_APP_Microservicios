@@ -1,5 +1,6 @@
 package hn.edu.ujcv.baleadashermanas
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,11 +10,13 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.google.gson.Gson
 import hn.edu.ujcv.baleadashermanas.DataCollection.*
 import hn.edu.ujcv.baleadashermanas.Service.*
 import kotlinx.android.synthetic.main.activity_facturacion.*
 import kotlinx.android.synthetic.main.activity_inventario.*
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -30,10 +33,11 @@ class Facturacion : AppCompatActivity() {
     var idProducto = ""
     val cai = "35BD6A-0195F4-B34BAA-8B7D13-37791A-2D"
     var nombreProducto = ""
-    var array = ArrayList<String>()
+    var productos = ArrayList<String>()
     var subtotal = 0.0
-    var contadorSpinnerCliente = 0
-
+    var contadorSpinnerMetodoPago = 0
+    var numero = 0
+    var totalPrecioOrden = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,16 +49,16 @@ class Facturacion : AppCompatActivity() {
         spi_metodoPago.isEnabled = false
         lsv_productos.isEnabled = false
         btn_menuPrincipalFacturacion.setOnClickListener {
-            val intent = Intent(this, Principal::class.java)
-            intent.putExtra("nombreUsuario", nombreUsuario)
-            startActivity(intent)
+                val intent = Intent(this, Principal::class.java)
+                intent.putExtra("nombreUsuario", nombreUsuario)
+                startActivity(intent)
         }
         btn_iniciarFactura.setOnClickListener {
-           v-> callServicePostFacturaEncabezado()
+                v-> callServicePostFacturaEncabezado()
         }
 
         btn_producto1.setOnClickListener {
-            v-> llenarTabla(btn_producto1.text.toString())
+                v -> llenarTabla(btn_producto1.text.toString())
         }
 
         btn_producto2.setOnClickListener {
@@ -89,6 +93,10 @@ class Facturacion : AppCompatActivity() {
                 v-> llenarTabla(btn_producto9.text.toString())
         }
 
+        btn_cancelar.setOnClickListener {
+                v-> cancelarFactura(idFactura)
+        }
+
         spi_metodoPago.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(
                 parent: AdapterView<*>?,
@@ -96,8 +104,12 @@ class Facturacion : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-                if(contadorSpinnerCliente>0) {
+                contadorSpinnerMetodoPago++
+                if(contadorSpinnerMetodoPago == 1){
+                    return
+                }
                     if(validarSpinnerMetodoPagoVacio()){
+                        contadorSpinnerMetodoPago++
                         txt_pago.isEnabled = false
                         txt_pago.setText("")
                         return
@@ -105,12 +117,28 @@ class Facturacion : AppCompatActivity() {
                     else{
                         txt_pago.isEnabled = true
                     }
-                }
-                contadorSpinnerCliente++
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 TODO("Not yet implemented")
+            }
+        }
+
+        lsv_productos.onItemClickListener = object :AdapterView.OnItemClickListener{
+            override fun onItemClick(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                if(position == 0){
+                    return
+                }else{
+                    var texto = lsv_productos.getItemAtPosition(position).toString()
+                    var lista = texto.split("|")
+                    var idDetalleABorrar = lista[3]
+                    eliminarProducto(idDetalleABorrar, position)
+                }
             }
         }
 
@@ -129,9 +157,173 @@ class Facturacion : AppCompatActivity() {
                 cambio()
             }
         })
+
+
     }
 
+    fun actualizarTotal() {
+        val isv: Double = totalPrecioOrden * 0.15
+        val subtotal: Double = totalPrecioOrden - isv
+        txt_total.setText(java.lang.String.valueOf(totalPrecioOrden))
+        txt_isv.setText(isv.toString())
+        txt_subtotal.setText(subtotal.toString())
+    }
 
+    private fun eliminarProducto(idDetalle:String, position: Int){
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("¿Desea eliminar este producto?")
+        builder.setMessage("¿Está seguro que desea eliminar el producto?")
+        builder.setPositiveButton("Sí") { dialogInterface: DialogInterface, i: Int ->
+            callServiceDeleteDetalle(idDetalle, position)
+        }
+        builder.setNegativeButton("Cancelar") { dialogInterface: DialogInterface, i: Int ->
+            return@setNegativeButton
+        }
+        builder.show()
+    }
+
+    private fun cancelarFactura(idFactura:String){
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("¿Desea cancelar ésta factura?")
+        builder.setMessage("¿Está seguro que desea eliminar la facura?")
+        builder.setPositiveButton("Sí") { dialogInterface: DialogInterface, i: Int ->
+            callServiceDeleteAllDetalles(idFactura)
+        }
+        builder.setNegativeButton("Cancelar") { dialogInterface: DialogInterface, i: Int ->
+            return@setNegativeButton
+        }
+        builder.show()
+    }
+
+    private fun callServiceDeleteAllDetalles(id:String) {
+        val facturaDetalleService: FacturaDetalleService =
+            RestEngine.buildService().create(FacturaDetalleService::class.java)
+        var result: Call<ResponseBody> = facturaDetalleService.deleteAllDetalles(id.toLong())
+
+        result.enqueue(object : Callback<ResponseBody> {
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                Toast.makeText(this@Facturacion, "Error", Toast.LENGTH_LONG).show()
+            }
+
+            override fun onResponse(
+                call: Call<ResponseBody>,
+                response: Response<ResponseBody>
+            ) {
+                if (response.isSuccessful) {
+                    callServiceDeleteFactura(idFactura)
+                } else if (response.code() == 401) {
+                    Toast.makeText(this@Facturacion, "Sesion expirada", Toast.LENGTH_LONG)
+                        .show()
+                } else {
+                    Toast.makeText(
+                        this@Facturacion,
+                        "Fallo al traer el item",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
+        })
+    }
+
+    private fun callServiceDeleteFactura(idFactura:String) {
+        val facturaEncabezadoService: FacturaEncabezadoService =
+            RestEngine.buildService().create(FacturaEncabezadoService::class.java)
+        var result: Call<ResponseBody> = facturaEncabezadoService.deleteFactura(idFactura.toLong())
+
+        result.enqueue(object : Callback<ResponseBody> {
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                Toast.makeText(this@Facturacion, "Error", Toast.LENGTH_LONG).show()
+            }
+
+            override fun onResponse(
+                call: Call<ResponseBody>,
+                response: Response<ResponseBody>
+            ) {
+                if (response.isSuccessful) {
+                    Toast.makeText(this@Facturacion, "Factura cancelada exitosamente", Toast.LENGTH_LONG).show()
+                    accionesCancelar()
+                } else if (response.code() == 401) {
+                    Toast.makeText(this@Facturacion, "Sesion expirada", Toast.LENGTH_LONG)
+                        .show()
+                } else {
+                    Toast.makeText(
+                        this@Facturacion,
+                        "Fallo al traer el item",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
+        })
+    }
+
+    fun accionesCancelar() {
+        nombreProducto = ""
+        idFactura = ""
+        idCliente = ""
+        idProducto = ""
+        idDetalle = ""
+        txt_subtotal.setText("0")
+        txt_isv.setText("0")
+        txt_total.setText("0")
+        txt_pago.setText("")
+        txt_cambio.setText("")
+        spi_metodoPago.setSelection(0)
+        spi_nombreCliente.isEnabled = true
+        spi_nombreCliente.setSelection(0)
+        habilitarProductos(false)
+        botonesPorDefecto()
+        productos.clear()
+        productos.add("Nombre del Producto|Cantidad|Precio|ID")
+        val arrayAdapter: ArrayAdapter<*>
+        arrayAdapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,productos)
+        lsv_productos.adapter = arrayAdapter
+        txt_subtotal.isEnabled = false
+        txt_isv.isEnabled = false
+        txt_total.isEnabled = false
+        lsv_productos.isEnabled = false
+        spi_metodoPago.isEnabled = false
+    }
+
+    private fun callServiceDeleteDetalle(idDetalle:String, position: Int) {
+        val facturaDetalleService: FacturaDetalleService =
+            RestEngine.buildService().create(FacturaDetalleService::class.java)
+        var result: Call<ResponseBody> = facturaDetalleService.deleteDetalle(idDetalle.toLong())
+
+        result.enqueue(object : Callback<ResponseBody> {
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                Toast.makeText(this@Facturacion, "Error", Toast.LENGTH_LONG).show()
+            }
+
+            override fun onResponse(
+                call: Call<ResponseBody>,
+                response: Response<ResponseBody>
+            ) {
+                if (response.isSuccessful) {
+                    Toast.makeText(this@Facturacion, "Eliminado correctamente", Toast.LENGTH_LONG).show()
+                } else if (response.code() == 401) {
+                    Toast.makeText(this@Facturacion, "Sesion expirada", Toast.LENGTH_LONG)
+                        .show()
+                } else {
+                    Toast.makeText(
+                        this@Facturacion,
+                        "Fallo al traer el item",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
+        })
+        var texto = lsv_productos.getItemAtPosition(position)
+        productos.remove(texto)
+        val arrayAdapter: ArrayAdapter<*>
+        arrayAdapter = ArrayAdapter(this@Facturacion,android.R.layout.simple_list_item_1,productos)
+        lsv_productos.adapter = arrayAdapter
+        totalPrecioOrden = 0.0
+        for(i in 1..productos.size - 1){
+            val lista = productos.get(i).split("|")
+            totalPrecioOrden += lista[2].toDouble()
+        }
+        actualizarTotal()
+    }
 
     private fun cambio() {
         if(txt_pago.text.isEmpty()){
@@ -196,9 +388,9 @@ class Facturacion : AppCompatActivity() {
 
     private fun llenarTabla(nombre :String){
         nombreProducto = nombre
-        callServiceGetProductoByNombre(nombre)
-        //
+        callServiceGetProductoByNombre(nombreProducto)
     }
+
 
     private fun capturarPrecio(texto: String){
         val lista = texto.split("|")
@@ -219,6 +411,7 @@ class Facturacion : AppCompatActivity() {
         txt_subtotal.setText(subtotalFinal)
         txt_isv.setText(isvFinal)
         txt_total.setText(totalFinal)
+        callServicePostFacturaDetalle()
     }
 
     private fun callServiceGetProductoByNombre(producto: String){
@@ -238,14 +431,18 @@ class Facturacion : AppCompatActivity() {
                     return
                 }
                 nombreProducto = response.body()?.nombreproducto.toString()
-                array.add(response.body()!!.nombreproducto + "|" + "1" + "|" + response.body()!!.precio)
-               // Toast.makeText(this@Facturacion, array.get((array.size - 1)), Toast.LENGTH_LONG).show()
-                capturarPrecio(array.get((array.size)-1))
+                productos.add(response.body()!!.nombreproducto + "|" + "1" + "|" + response.body()!!.precio)
+                //Toast.makeText(this@Facturacion, array.get((array.size - 1)), Toast.LENGTH_LONG).show()
+                idProducto = response.body()!!.idproducto.toString()
+                txv_idProducto.setText(idProducto)
+                numero++
+                capturarPrecio(productos.get((productos.size)-1))
                 val arrayAdapter: ArrayAdapter<*>
-                arrayAdapter = ArrayAdapter(this@Facturacion,android.R.layout.simple_list_item_1,array)
+                arrayAdapter = ArrayAdapter(this@Facturacion,android.R.layout.simple_list_item_1,productos)
                 lsv_productos.adapter = arrayAdapter
                 calcularTotal()
                 habilitarTextos()
+
             }
         }
         )
@@ -262,9 +459,9 @@ class Facturacion : AppCompatActivity() {
         var intent = intent
         nombreUsuario = intent.getSerializableExtra("nombreUsuario") as String
         txv_labelNombreUsuarioFacturacion.setText(nombreUsuario)
-        array.add("Nombre del Producto|Cantidad|Precio|ID")
+        productos.add("Nombre del Producto|Cantidad|Precio|ID")
         val arrayAdapter: ArrayAdapter<*>
-        arrayAdapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,array)
+        arrayAdapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,productos)
         lsv_productos.adapter = arrayAdapter
 
     }
@@ -391,14 +588,34 @@ class Facturacion : AppCompatActivity() {
         })
     }
 
-    private fun callServicePostFacturaDetalle() {
+    private fun capturarIdDetalle(){
+        val facturaDetalleService:FacturaDetalleService = RestEngine.buildService().create(FacturaDetalleService::class.java)
+        var result: Call<List<FacturaDetalleCollectionItem>> = facturaDetalleService.listDetalles()
+        val arrayAdapter: ArrayAdapter<*>
+        arrayAdapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,productos)
+        result.enqueue(object : Callback<List<FacturaDetalleCollectionItem>> {
+            override fun onFailure(call: Call<List<FacturaDetalleCollectionItem>>, t: Throwable) {
+                Toast.makeText(this@Facturacion,"Error", Toast.LENGTH_LONG).show()
+            }
+            override fun onResponse(
+                call: Call<List<FacturaDetalleCollectionItem>>,
+                response: Response<List<FacturaDetalleCollectionItem>>
+            ) {
+                idDetalle = response.body()!!.get(response.body()!!.size-1).iddetalle.toString()
+                var filaAnterior = productos.get(productos.size - 1)
+                productos.set(productos.size - 1,filaAnterior + "|" + idDetalle)
+                lsv_productos.adapter = arrayAdapter
+            }
+        })
+    }
 
+    private fun callServicePostFacturaDetalle() {
         var cantidad = ""
         var precioProducto = ""
-        var lista = (array.get(array.size- 1 )).split("|") // 1 cantidad 2 precio
+        var lista = (productos.get(productos.size- 1 )).split("|") // 1 cantidad 2 precio
         cantidad = lista[1]
         precioProducto = lista[2]
-
+        idProducto = txv_idProducto.text.toString()
         val facturaInfo = FacturaDetalleCollectionItem(
             iddetalle = 0, // es automatico
             idfactura = idFactura.toLong(),
@@ -408,9 +625,8 @@ class Facturacion : AppCompatActivity() {
         )
         addFacturaDetalle(facturaInfo) {
             if (it?.iddetalle != null) {
-                Toast.makeText(this,"Factura iniciada exitosamente", Toast.LENGTH_LONG).show()
-                habilitarProductos(true)
-                accionesIniciar()
+                Toast.makeText(this,"Agregado producto", Toast.LENGTH_LONG).show()
+                capturarIdDetalle()
             } else {
                 Toast.makeText(this,"Error", Toast.LENGTH_LONG).show()
             }
@@ -469,7 +685,8 @@ class Facturacion : AppCompatActivity() {
     fun accionesIniciar() {
         btn_iniciarFactura.isEnabled = false
         btn_pagar.isEnabled = true
-        btn_cancelar.isEnabled = false
+        btn_cancelar.isEnabled = true
+        spi_nombreCliente.isEnabled = false
         spi_metodoPago.setEnabled(true)
         lsv_productos.isEnabled = true
     }
@@ -479,6 +696,4 @@ class Facturacion : AppCompatActivity() {
         btn_cancelar.setEnabled(false)
         btn_pagar.isEnabled = false
     }
-
-
 }

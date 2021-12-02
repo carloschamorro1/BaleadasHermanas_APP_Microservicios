@@ -167,11 +167,11 @@
                 android:id="@+id/spi_metodoPago"
                 android:layout_width="0dp"
                 android:layout_height="59dp"
-                android:enabled="false"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="48dp"
                 android:layout_marginEnd="25dp"
                 android:layout_marginBottom="50dp"
+                android:enabled="false"
                 app:layout_constraintBottom_toBottomOf="@+id/txv_pago"
                 app:layout_constraintEnd_toEndOf="@+id/lsv_productos"
                 app:layout_constraintStart_toEndOf="@+id/txv_metodoPago"
@@ -324,15 +324,17 @@
                 app:layout_constraintBottom_toBottomOf="@+id/txt_total"
                 app:layout_constraintEnd_toStartOf="@+id/txt_total" />
 
+
             <EditText
                 android:id="@+id/txt_total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:clickable="true"
+                android:layout_marginTop="4dp"
+                android:clickable="false"
                 android:editable="false"
                 android:ems="10"
                 android:enabled="false"
+                android:focusable="false"
                 android:fontFamily="@font/roboto_regular"
                 android:inputType="numberDecimal"
                 android:maxLength="15"
@@ -342,7 +344,6 @@
                 app:layout_constraintStart_toStartOf="@+id/txt_isv"
                 app:layout_constraintTop_toBottomOf="@+id/txt_isv"
                 tools:ignore="SpeakableTextPresentCheck" />
-
 
             <Button
                 android:id="@+id/btn_cancelar"
@@ -389,7 +390,7 @@
                 android:drawableLeft="@drawable/baleadasencilla"
                 android:enabled="false"
                 android:fontFamily="@font/roboto_bold"
-                android:text="Baleada sencilla"
+                android:text="Baleada Sencilla"
                 app:layout_constraintBottom_toBottomOf="@+id/btn_producto2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -550,6 +551,16 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/btn_producto9" />
+
+            <TextView
+                android:id="@+id/txv_idProducto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="37dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

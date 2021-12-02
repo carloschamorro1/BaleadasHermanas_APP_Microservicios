@@ -3,7 +3,7 @@ package hn.edu.ujcv.baleadashermanas.DataCollection
 class FacturaEncabezadoDataCollection : ArrayList<FacturaEncabezadoDataCollectionItem>()
 
 data class FacturaEncabezadoDataCollectionItem(
-    val idFactura:Long,
+    val idfactura:Long,
     val cai: String,
     val idempleado: String,
     val totalfactura: String,

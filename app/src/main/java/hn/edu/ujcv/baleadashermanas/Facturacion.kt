@@ -23,6 +23,9 @@ import retrofit2.Response
 import java.text.NumberFormat
 import java.util.*
 
+
+
+
 class Facturacion : AppCompatActivity() {
     var nombreUsuario = ""
     var clientes = ArrayList<String>()
@@ -95,6 +98,10 @@ class Facturacion : AppCompatActivity() {
 
         btn_cancelar.setOnClickListener {
                 v-> cancelarFactura(idFactura)
+        }
+
+        btn_pagar.setOnClickListener {
+                v-> guardarFactura()
         }
 
         spi_metodoPago.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
@@ -501,7 +508,6 @@ class Facturacion : AppCompatActivity() {
 
 
     private fun callServicePostFacturaEncabezado() {
-
         val f: Calendar
         f = Calendar.getInstance()
         val d: Int = f.get(Calendar.DATE)
@@ -527,6 +533,65 @@ class Facturacion : AppCompatActivity() {
                 habilitarProductos(true)
                 accionesIniciar()
                 capturarIdFactura()
+            } else {
+                Toast.makeText(this,"Error", Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    fun validacionPago() {
+        if (spi_metodoPago.getSelectedItem().equals("Seleccione el método")) {
+            Toast.makeText(this@Facturacion,"Por favor seleccione el método de pago",Toast.LENGTH_SHORT).show()
+            return
+        }
+        if (txt_pago.text.equals("")) {
+            txt_pago.error = "Por favor ingrese el pago"
+            return
+        }
+        if (txt_cambio.text.equals("")) {
+            txt_cambio.error = "Por favor ingrese el pago"
+            return
+        }
+        val total: Double = txt_total.text.toString().toDouble()
+        val pago: Double = txt_pago.text.toString().toDouble()
+        if (total > pago) {
+            val locale = Locale("es", "HN")
+            val currencyFormatter = NumberFormat.getCurrencyInstance(locale)
+            val resto = total - pago
+            val restoTotal = currencyFormatter.format(resto)
+            Toast.makeText(this,"Pago insuficiente, faltan: L $restoTotal ", Toast.LENGTH_SHORT).show()
+            return
+        }
+    }
+
+    private fun guardarFactura() {
+
+        validacionPago()
+        val f: Calendar
+        f = Calendar.getInstance()
+        val d: Int = f.get(Calendar.DATE)
+        val mes: Int = 1 + f.get(Calendar.MONTH)
+        val año: Int = f.get(Calendar.YEAR)
+        val fecha = "$año-$mes-$d"
+
+        capturarICliente()
+        var cambio = txt_cambio.text.toString().substring(1)
+
+        val facturaInfo = FacturaEncabezadoDataCollectionItem(
+            idfactura = idFactura.toLong(), // Este se pone asi porque es automatico
+            cai = cai,
+            idempleado = idEmpleado,
+            totalfactura = txt_total.text.toString(),
+            idcliente = idCliente.toLong(),
+            fecha_factura = fecha,
+            cambio_factura = cambio,
+            pago_factura = txt_pago.text.toString()
+        )
+        addFacturaEncabezado(facturaInfo) {
+            if (it?.idfactura != null) {
+                Toast.makeText(this,"Factura pagada exitosamente", Toast.LENGTH_LONG).show()
+                habilitarProductos(true)
+                accionesCancelar()
             } else {
                 Toast.makeText(this,"Error", Toast.LENGTH_LONG).show()
             }

@@ -27,7 +27,6 @@ import androidx.core.content.ContextCompat
 import com.google.gson.Gson
 import com.itextpdf.text.*
 import com.itextpdf.text.pdf.PdfWriter
-
 import hn.edu.ujcv.baleadashermanas.DataCollection.*
 import hn.edu.ujcv.baleadashermanas.Service.*
 import kotlinx.android.synthetic.main.activity_facturacion.*
@@ -42,18 +41,8 @@ import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.*
 import com.itextpdf.text.pdf.PdfPCell
-
 import com.itextpdf.text.pdf.PdfPTable
 import com.itextpdf.text.Paragraph
-
-
-
-
-
-
-
-
-
 
 class Facturacion : AppCompatActivity() {
     var nombreUsuario = ""
@@ -72,7 +61,7 @@ class Facturacion : AppCompatActivity() {
     var totalPrecioOrden = 0.0
     var nombreCliente = ""
     var rtnCliente = ""
-
+    var path = ""
 
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -131,7 +120,6 @@ class Facturacion : AppCompatActivity() {
 
         btn_cancelar.setOnClickListener {
                 v-> cancelarFactura(idFactura)
-
         }
 
         btn_pagar.setOnClickListener {
@@ -283,7 +271,9 @@ class Facturacion : AppCompatActivity() {
         val mDoc = Document()
         val mFileName = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault())
             .format(System.currentTimeMillis())
-        val mFilePath = Environment.getExternalStorageDirectory().toString() + "/" + mFileName + ".pdf"
+        val factura = "Factura_$idFactura" + "_"
+        val mFilePath = Environment.getExternalStorageDirectory().toString() + "/" + factura + mFileName + ".pdf"
+        path = mFilePath
         try{
 
             val f: Calendar
@@ -805,12 +795,20 @@ class Facturacion : AppCompatActivity() {
             if (it?.idfactura != null) {
                 Toast.makeText(this,"Factura pagada exitosamente", Toast.LENGTH_LONG).show()
                 imprimirFactura()
+                mostrarFactura()
                 habilitarProductos(true)
                 accionesCancelar()
             } else {
                 Toast.makeText(this,"Error", Toast.LENGTH_LONG).show()
             }
         }
+    }
+
+    fun mostrarFactura(){
+        val intent = Intent(this, PDF::class.java)
+        intent.putExtra("path", path)
+        intent.putExtra("ViewType","storage")
+        startActivity(intent)
     }
 
     fun addFacturaEncabezado(clienteData: FacturaEncabezadoDataCollectionItem, onResult: (FacturaEncabezadoDataCollectionItem?) -> Unit){

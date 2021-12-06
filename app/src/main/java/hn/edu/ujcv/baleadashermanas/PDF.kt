@@ -21,8 +21,4 @@ class PDF : AppCompatActivity() {
         file = File(path)
     }
 
-    companion object {
-        private const val PDF_SELECTION_CODE = 99
-    }
-
 }

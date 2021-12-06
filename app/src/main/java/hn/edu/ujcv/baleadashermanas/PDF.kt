@@ -12,7 +12,6 @@ class PDF : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pdf)
         inicializar()
-        //checkPdfAction(intent)
         pdfView.fromFile(file).load()
     }
 

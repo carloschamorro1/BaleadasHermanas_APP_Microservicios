@@ -1,17 +1,33 @@
 package hn.edu.ujcv.baleadashermanas
 
+import android.Manifest.permission.READ_EXTERNAL_STORAGE
+import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
+import android.os.Build
+import android.os.Build.VERSION.SDK_INT
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
+import android.provider.Settings
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.annotation.NonNull
+import androidx.annotation.Nullable
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.google.gson.Gson
+import com.itextpdf.text.*
+import com.itextpdf.text.pdf.PdfWriter
+
 import hn.edu.ujcv.baleadashermanas.DataCollection.*
 import hn.edu.ujcv.baleadashermanas.Service.*
 import kotlinx.android.synthetic.main.activity_facturacion.*
@@ -20,8 +36,21 @@ import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.FileOutputStream
+import java.lang.Exception
 import java.text.NumberFormat
+import java.text.SimpleDateFormat
 import java.util.*
+import com.itextpdf.text.pdf.PdfPCell
+
+import com.itextpdf.text.pdf.PdfPTable
+import com.itextpdf.text.Paragraph
+
+
+
+
+
+
 
 
 
@@ -41,7 +70,11 @@ class Facturacion : AppCompatActivity() {
     var contadorSpinnerMetodoPago = 0
     var numero = 0
     var totalPrecioOrden = 0.0
+    var nombreCliente = ""
+    var rtnCliente = ""
 
+
+    @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_facturacion)
@@ -98,6 +131,7 @@ class Facturacion : AppCompatActivity() {
 
         btn_cancelar.setOnClickListener {
                 v-> cancelarFactura(idFactura)
+
         }
 
         btn_pagar.setOnClickListener {
@@ -164,8 +198,184 @@ class Facturacion : AppCompatActivity() {
                 cambio()
             }
         })
+    }
 
+    private fun imprimirFactura(){
+            savePDF(productos)
+    }
 
+    private fun validarPermisos(){
+            if (!checkPermission()){
+                showPermissionDialog();
+            }
+    }
+
+    private fun showPermissionDialog() {
+        if (SDK_INT >= Build.VERSION_CODES.R) {
+            try {
+                val intent = Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION)
+                intent.addCategory("android.intent.category.DEFAULT")
+                intent.data = Uri.parse(
+                    String.format(
+                        "package:%s", *arrayOf<Any>(
+                            applicationContext.packageName
+                        )
+                    )
+                )
+                startActivityForResult(intent, 2000)
+            } catch (e: Exception) {
+                val intent = Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION)
+                startActivityForResult(intent, 2000)
+            }
+        } else ActivityCompat.requestPermissions(
+            this@Facturacion,
+            arrayOf<String>(WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE),
+            333
+        )
+    }
+
+    private fun checkPermission(): Boolean {
+        return if (SDK_INT >= Build.VERSION_CODES.R) {
+            Environment.isExternalStorageManager()
+        } else {
+            val write: Int = ContextCompat.checkSelfPermission(
+                applicationContext,
+                WRITE_EXTERNAL_STORAGE
+            )
+            val read: Int = ContextCompat.checkSelfPermission(
+                applicationContext,
+                READ_EXTERNAL_STORAGE
+            )
+            write == PackageManager.PERMISSION_GRANTED &&
+                    read == PackageManager.PERMISSION_GRANTED
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        @NonNull permissions: Array<String?>,
+        @NonNull grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == 333) {
+            if (grantResults.size > 0) {
+                val write = grantResults[0] == PackageManager.PERMISSION_GRANTED
+                val read = grantResults[1] == PackageManager.PERMISSION_GRANTED
+                if (read && write) {
+                } else {
+                }
+            }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, @Nullable data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 2000) {
+            if (SDK_INT >= Build.VERSION_CODES.R) {
+                if (Environment.isExternalStorageManager()) {
+                } else {
+                }
+            }
+        }
+    }
+
+    private fun savePDF(array: ArrayList<String>){
+        val mDoc = Document()
+        val mFileName = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault())
+            .format(System.currentTimeMillis())
+        val mFilePath = Environment.getExternalStorageDirectory().toString() + "/" + mFileName + ".pdf"
+        try{
+
+            val f: Calendar
+            f = Calendar.getInstance()
+            val d: Int = f.get(Calendar.DATE)
+            val mes: Int = 1 + f.get(Calendar.MONTH)
+            val año: Int = f.get(Calendar.YEAR)
+            val fechaActual = "$d/$mes/$año"
+            val locale = Locale("es", "HN")
+            val currencyFormatter: NumberFormat = NumberFormat.getCurrencyInstance(locale)
+
+            PdfWriter.getInstance(mDoc,FileOutputStream(mFilePath))
+            mDoc.open()
+            mDoc.addAuthor("Carlos Chamorro")
+
+            val titulo = Paragraph(
+                "Baleadas Hermanas",
+                Font(Font.FontFamily.HELVETICA, 50.0f, Font.BOLD, BaseColor.BLACK)
+            )
+            mDoc.add(titulo)
+            val caiData = Paragraph(
+                "CAI : $cai",
+            )
+            capturarICliente()
+            val espacio = Paragraph("\n")
+            mDoc.add(espacio)
+            mDoc.add(caiData)
+            var usuario = txv_labelNombreUsuarioFacturacion.text.toString()
+            val numeroFacturaData = Paragraph("Número de la factura: $idFactura")
+            val nombreEmpleado = Paragraph("Nombre del empleado: $usuario")
+            val cliente = Paragraph("Nombre del cliente: $nombreCliente")
+            val rtn = Paragraph("RTN del cliente: $rtnCliente")
+            val fecha = Paragraph("Fecha: $fechaActual")
+            mDoc.add(numeroFacturaData)
+            mDoc.add(nombreEmpleado)
+            mDoc.add(cliente)
+            mDoc.add(rtn)
+            mDoc.add(fecha)
+            mDoc.add(espacio)
+
+            for (i in 0..(productos.size-1)){
+                val lista = productos.get(i).split("|")
+
+                val columna1 = lista[0]
+                val columna2 = lista[1]
+                var columna3 = lista[2]
+
+                if(i>0){
+                    columna3 = currencyFormatter.format(lista[2].toDouble())
+                }
+
+                val table = PdfPTable(3)
+                var cell = PdfPCell(Phrase(columna1))
+                cell.horizontalAlignment = Element.ALIGN_CENTER
+                cell.verticalAlignment = Element.ALIGN_CENTER
+                table.addCell(cell)
+
+                cell = PdfPCell(Phrase(columna2))
+                cell.setPadding(5f)
+                cell.isUseAscender = true
+                cell.isUseDescender = true
+                cell.horizontalAlignment = Element.ALIGN_CENTER
+                table.addCell(cell)
+
+                cell = PdfPCell()
+                cell.setPadding(5f)
+                cell.isUseAscender = true
+                cell.isUseDescender = true
+                val p = Paragraph(columna3)
+                p.alignment = Element.ALIGN_CENTER
+                cell.addElement(p)
+                table.addCell(cell)
+                mDoc.add(table)
+            }
+            mDoc.add(espacio)
+            mDoc.add(espacio)
+            val totalCobrado = txt_total.text.toString()
+            val totalPagado = txt_pago.text.toString()
+            val cambioTotal = txt_cambio.text.toString()
+            val totalFinal = currencyFormatter.format(totalCobrado.toDouble())
+            val pagoFinal = currencyFormatter.format(totalPagado.toDouble())
+            val cambiolFinal = currencyFormatter.format(cambioTotal.substring(1).toDouble())
+            var total = Paragraph("Total $totalFinal")
+            var pago = Paragraph("Pago $pagoFinal")
+            var cambio = Paragraph("Cambio $cambiolFinal")
+            mDoc.add(pago)
+            mDoc.add(cambio)
+            mDoc.add(total)
+            mDoc.close()
+        }catch(e: Exception){
+            Toast.makeText(this, e.message,Toast.LENGTH_SHORT).show()
+        }
     }
 
     fun actualizarTotal() {
@@ -232,6 +442,7 @@ class Facturacion : AppCompatActivity() {
         })
     }
 
+
     private fun callServiceDeleteFactura(idFactura:String) {
         val facturaEncabezadoService: FacturaEncabezadoService =
             RestEngine.buildService().create(FacturaEncabezadoService::class.java)
@@ -269,6 +480,7 @@ class Facturacion : AppCompatActivity() {
         idCliente = ""
         idProducto = ""
         idDetalle = ""
+        contadorSpinnerMetodoPago = 0
         txt_subtotal.setText("0")
         txt_isv.setText("0")
         txt_total.setText("0")
@@ -375,6 +587,7 @@ class Facturacion : AppCompatActivity() {
                     val arrayAdapter: ArrayAdapter<*>
                     arrayAdapter = ArrayAdapter(this@Facturacion,android.R.layout.simple_list_item_1,clientes)
                     spi_nombreCliente.adapter = arrayAdapter
+                    rtnCliente = response.body()!!.get(i).rtncliente
                 }
 
             }
@@ -470,7 +683,7 @@ class Facturacion : AppCompatActivity() {
         val arrayAdapter: ArrayAdapter<*>
         arrayAdapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,productos)
         lsv_productos.adapter = arrayAdapter
-
+        validarPermisos()
     }
 
 
@@ -478,6 +691,7 @@ class Facturacion : AppCompatActivity() {
         val string = spi_nombreCliente.selectedItem.toString()
         val lista = string.split(".")
         idCliente = lista[0]
+        nombreCliente = lista[1]
     }
 
 
@@ -590,6 +804,7 @@ class Facturacion : AppCompatActivity() {
         addFacturaEncabezado(facturaInfo) {
             if (it?.idfactura != null) {
                 Toast.makeText(this,"Factura pagada exitosamente", Toast.LENGTH_LONG).show()
+                imprimirFactura()
                 habilitarProductos(true)
                 accionesCancelar()
             } else {
@@ -690,7 +905,7 @@ class Facturacion : AppCompatActivity() {
         )
         addFacturaDetalle(facturaInfo) {
             if (it?.iddetalle != null) {
-                Toast.makeText(this,"Agregado producto", Toast.LENGTH_LONG).show()
+                Toast.makeText(this,"Agregado producto", Toast.LENGTH_SHORT).show()
                 capturarIdDetalle()
             } else {
                 Toast.makeText(this,"Error", Toast.LENGTH_LONG).show()
